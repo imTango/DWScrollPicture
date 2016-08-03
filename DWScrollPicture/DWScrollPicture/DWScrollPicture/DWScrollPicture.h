@@ -12,7 +12,7 @@
 @protocol DWScrollerPageCountDelegate <NSObject>
 
 @optional
-- (void)dw_ScrollerPageCount:(double)pageCount imageCount:(NSInteger)imageCount;
+- (void)dw_NewFeaturesPageCount:(double)pageCount imageCount:(NSInteger)imageCount;
 
 @end
 

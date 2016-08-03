@@ -145,9 +145,9 @@
     }
     
     //代理方法
-    if ([self.delegate respondsToSelector:@selector(dw_ScrollerPageCount:imageCount:)]) {
+    if ([self.delegate respondsToSelector:@selector(dw_NewFeaturesPageCount:imageCount:)]) {
         
-        [self.delegate dw_ScrollerPageCount:page imageCount:self.imageNameArray.count - 1];
+        [self.delegate dw_NewFeaturesPageCount:page imageCount:self.imageNameArray.count - 1];
         
     }
     

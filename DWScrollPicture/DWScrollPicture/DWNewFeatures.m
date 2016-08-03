@@ -60,7 +60,7 @@
 }
 
 
-- (void)dw_ScrollerPageCount:(double)pageCount imageCount:(NSInteger)imageCount{
+- (void)dw_NewFeaturesPageCount:(double)pageCount imageCount:(NSInteger)imageCount{
     
     //最后一张新特性图片
     if (pageCount > imageCount) {
