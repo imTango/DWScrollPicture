@@ -28,7 +28,7 @@
  *  @param newFeaturesVC 新特性控制器
  *  @param mainVC        主页控制器
  */
-- (void)dw_AppdelegateNewFeaturesWindow:(UIWindow *)window newFeaturesVC:(id)newFeaturesVC mainVC:(id)mainVC;
++ (void)dw_AppdelegateNewFeaturesWindow:(UIWindow *)window newFeaturesVC:(id)newFeaturesVC mainVC:(id)mainVC;
 
 /**
  *  设置引导图

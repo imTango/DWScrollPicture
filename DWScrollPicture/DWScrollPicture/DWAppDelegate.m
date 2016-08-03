@@ -21,7 +21,9 @@
     
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [[[DWScrollPicture alloc] init] dw_AppdelegateNewFeaturesWindow:self.window newFeaturesVC:[[DWNewFeatures alloc] init] mainVC:[[DWViewController alloc] init]];
+    [DWScrollPicture dw_AppdelegateNewFeaturesWindow:self.window
+                                                      newFeaturesVC:[[DWNewFeatures alloc] init]
+                                                             mainVC:[[DWViewController alloc] init]];
     
     return YES;
 }
