@@ -37,11 +37,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.features.delegate = self;
-    
+        
     //设置新特性图片
-    [self.features dw_SetNewFeaturesView:self.view imageName:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] currentPageIndicatorTintColor:[UIColor orangeColor] pageIndicatorTintColor:[UIColor grayColor] lastPageWithView:^(UIView *lastPageView) {
+    [self.features dw_SetNewFeaturesView:self.view delegate:self imageName:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] currentPageIndicatorTintColor:[UIColor orangeColor] pageIndicatorTintColor:[UIColor grayColor] lastPageWithView:^(UIView *lastPageView) {
         
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(DWScreen_Width / 2 - 50, DWScreen_Height - 150, 100, 35)];
         

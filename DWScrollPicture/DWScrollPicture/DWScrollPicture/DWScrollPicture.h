@@ -12,6 +12,12 @@
 @protocol DWScrollerPageCountDelegate <NSObject>
 
 @optional
+/**
+ *  新特性视图代理方法
+ *
+ *  @param pageCount  当前所在界面索引
+ *  @param imageCount 新特性图片总数
+ */
 - (void)dw_NewFeaturesPageCount:(double)pageCount imageCount:(NSInteger)imageCount;
 
 @end
@@ -34,11 +40,12 @@
  *  设置引导图
  *
  *  @param view                          当前控制器View
+ *  @param delegate                      代理遵守者
  *  @param imageNameArray                引导图数组
  *  @param currentPageIndicatorTintColor pageController选中时的颜色
  *  @param pageIndicatorTintColor        pageController默认颜色
  *  @param lastPageView                  最后一个引导图
  */
-- (void)dw_SetNewFeaturesView:(UIView *)view imageName:(NSArray *)imageNameArray currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor lastPageWithView:(void (^) (UIView *lastPageView))lastPageView;
+- (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor lastPageWithView:(void (^) (UIView *lastPageView))lastPageView;
 
 @end

@@ -58,9 +58,11 @@
 }
 
 #pragma mark ---设置引导页
-- (void)dw_SetNewFeaturesView:(UIView *)view imageName:(NSArray *)imageNameArray currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor lastPageWithView:(void (^) (UIView *lastPageView))lastPageView {
+- (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor lastPageWithView:(void (^) (UIView *lastPageView))lastPageView {
     
     self.imageNameArray = imageNameArray;
+    
+    self.delegate = delegate;
     
     //初始化一个ScrollView
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:DWScreen_Frame];
