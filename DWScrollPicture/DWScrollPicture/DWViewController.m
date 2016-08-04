@@ -7,35 +7,38 @@
 //
 
 #import "DWViewController.h"
+#import "DWScrollPicture.h"
 
 @interface DWViewController ()
+
+@property (strong, nonatomic) DWScrollPicture *scroller;
 
 @end
 
 @implementation DWViewController
+
+- (DWScrollPicture *)scroller {
+    
+    if (!_scroller) {
+        _scroller = [[DWScrollPicture alloc] init];
+    }
+    
+    return _scroller;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
    
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.scroller setPageSelctColor:[UIColor blueColor]];
     
-    label.textAlignment = NSTextAlignmentCenter;
+    [self.scroller dw_SetShufflingFigureView:self.view sizeY:0 height:self.view.frame.size.height/2 pageY:50 imageArray:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] timeInterval:2.0 animateTimer:1.0];
     
-    label.font = [UIFont systemFontOfSize:32];
+    [self.scroller dw_removePageControl];
     
-    label.text = @"This's MainView!!!";
-    
-    label.textColor = [UIColor orangeColor];
-    
-    [self.view addSubview:label];
-    
-}
+    [self.scroller dw_startShufflingTimer];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

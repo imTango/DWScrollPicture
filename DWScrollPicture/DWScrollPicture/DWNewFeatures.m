@@ -37,31 +37,36 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-        
+    
     //设置新特性图片
-    [self.features dw_SetNewFeaturesView:self.view delegate:self imageName:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] currentPageIndicatorTintColor:[UIColor orangeColor] pageIndicatorTintColor:[UIColor grayColor] lastPageWithView:^(UIView *lastPageView) {
+    [self.features dw_SetNewFeaturesView:self.view delegate:self imageName:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {
         
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(DWScreen_Width / 2 - 50, DWScreen_Height - 150, 100, 35)];
+        if (imageCount == imageAllCount) {
+            
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(DWScreen_Width / 2 - 50, DWScreen_Height - 150, 100, 35)];
+            
+            [button setTitle:@"进入主页" forState:UIControlStateNormal];
+            
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
+            button.backgroundColor = [UIColor orangeColor];
+            
+            [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+            
+            [pageImageView addSubview:button];
+            
+        }
         
-        [button setTitle:@"进入主页" forState:UIControlStateNormal];
-        
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        button.backgroundColor = [UIColor orangeColor];
-        
-        [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-        
-        [lastPageView addSubview:button];
         
     }];
     
 }
 
 
-- (void)dw_NewFeaturesPageCount:(double)pageCount imageCount:(NSInteger)imageCount{
+- (void)dw_NewFeaturesPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount{
     
     //最后一张新特性图片
-    if (pageCount > imageCount) {
+    if (pageCount > imageAllCount) {
         
         //跳转到首页控制器
         [self presentViewController:[DWViewController new] animated:YES completion:nil];
