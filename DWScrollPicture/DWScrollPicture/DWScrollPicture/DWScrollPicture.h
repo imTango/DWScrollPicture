@@ -80,16 +80,16 @@
 /**
  *  暂时停止自动轮播
  */
-- (void)dw_stopShufflingTimer;
+- (void)dw_stopShuffling;
 
 /**
  *  开启自动轮播
  */
-- (void)dw_startShufflingTimer;
+- (void)dw_startShuffling;
 
 /**
  *  关闭自动轮播
  */
-- (void)dw_dismissShufflingTimer;
+- (void)dw_dismissShuffling;
 
 @end

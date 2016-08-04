@@ -246,36 +246,7 @@
     
     self.shufflingTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(startShuffling) userInfo:nil repeats:YES];
     
-    [self dw_stopShufflingTimer];
-    
-}
-
-#pragma mark ---关闭定时器
-- (void)dw_stopShufflingTimer {
-    
-    [self.shufflingTimer setFireDate:[NSDate distantFuture]];
-}
-
-#pragma mark ---开启定时器
-- (void)dw_startShufflingTimer {
-    
-    [self.shufflingTimer setFireDate:[NSDate distantPast]];
-    
-}
-
-#pragma mark ---取消定时器
-- (void)dw_dismissShufflingTimer {
-    
-    [self.shufflingTimer invalidate];
-    
-    self.shufflingTimer = nil;
-    
-}
-
-#pragma mark ---删除pageController
-- (void)dw_removePageControl {
-    
-    [self.pageControl removeFromSuperview];
+    [self dw_stopShuffling];
     
 }
 
@@ -336,6 +307,35 @@
         [self.delegate dw_NewFeaturesPageCount:page imageAllCount:self.imageNameArray.count - 1];
         
     }
+    
+}
+
+#pragma mark ---关闭定时器
+- (void)dw_stopShuffling {
+    
+    [self.shufflingTimer setFireDate:[NSDate distantFuture]];
+}
+
+#pragma mark ---开启定时器
+- (void)dw_startShuffling {
+    
+    [self.shufflingTimer setFireDate:[NSDate distantPast]];
+    
+}
+
+#pragma mark ---取消定时器
+- (void)dw_dismissShuffling {
+    
+    [self.shufflingTimer invalidate];
+    
+    self.shufflingTimer = nil;
+    
+}
+
+#pragma mark ---删除pageController
+- (void)dw_removePageControl {
+    
+    [self.pageControl removeFromSuperview];
     
 }
 
