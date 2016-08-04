@@ -16,9 +16,7 @@
 ####在- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}方法中写入以下代码
 	 self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [DWScrollPicture 									dw_AppdelegateNewFeaturesWindow:self.window
-	newFeaturesVC:[[新特性控制器 alloc] init]
-	mainVC:[[首页控制器 alloc] init]];
+    [DWScrollPicture dw_AppdelegateNewFeaturesWindow:self.window newFeaturesVC:[[新特性控制器 alloc] init] mainVC:[[首页控制器 alloc] init]];
 	
 	return YES;
 ---
