@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "DWScrollPicture", "DWScrollPicture/DWScrollPicture/DWScrollPicture/DWScrollPicture/**/*.{h,m}"
+  s.source_files  =  "DWScrollPicture/DWScrollPicture/DWScrollPicture/DWScrollPicture/*"
   #s.exclude_files = "Classes/Exclude"
   # s.public_header_files = "Classes/**/*.h"
 
