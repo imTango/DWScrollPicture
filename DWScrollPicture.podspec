@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
  
-  s.source       = { :git => "https://github.com/dwanghello/DWScrollPicture.git", :tag => "{s.version}" }
+  s.source       = { :git => "https://github.com/dwanghello/DWScrollPicture.git", :tag => "{#s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
