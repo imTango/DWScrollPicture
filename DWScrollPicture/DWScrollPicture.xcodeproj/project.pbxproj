@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A485C011D543C28003539AD /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C001D543C28003539AD /* UIView+Extension.m */; };
 		4A7966891D51CFCC00237BD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966881D51CFCC00237BD9 /* main.m */; };
 		4A79668C1D51CFCC00237BD9 /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A79668B1D51CFCC00237BD9 /* DWAppDelegate.m */; };
 		4A79668F1D51CFCC00237BD9 /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A79668E1D51CFCC00237BD9 /* DWViewController.m */; };
 		4A79669A1D51CFCC00237BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A7966981D51CFCC00237BD9 /* LaunchScreen.storyboard */; };
 		4A7966A91D51D06100237BD9 /* DWScrollPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966A51D51D06100237BD9 /* DWScrollPicture.m */; };
-		4A7966AA1D51D06100237BD9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966A81D51D06100237BD9 /* UIView+Extension.m */; };
 		4A7966AD1D51D19500237BD9 /* DWNewFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966AC1D51D19500237BD9 /* DWNewFeatures.m */; };
 		4A7966B11D51D5BB00237BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A7966B01D51D5BB00237BD9 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A485BFF1D543C28003539AD /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		4A485C001D543C28003539AD /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		4A7966841D51CFCC00237BD9 /* DWScrollPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWScrollPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7966881D51CFCC00237BD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A79668A1D51CFCC00237BD9 /* DWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
@@ -28,8 +30,6 @@
 		4A79669B1D51CFCC00237BD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A7966A41D51D06100237BD9 /* DWScrollPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollPicture.h; sourceTree = "<group>"; };
 		4A7966A51D51D06100237BD9 /* DWScrollPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollPicture.m; sourceTree = "<group>"; };
-		4A7966A71D51D06100237BD9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		4A7966A81D51D06100237BD9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		4A7966AB1D51D19500237BD9 /* DWNewFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNewFeatures.h; sourceTree = "<group>"; };
 		4A7966AC1D51D19500237BD9 /* DWNewFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNewFeatures.m; sourceTree = "<group>"; };
 		4A7966B01D51D5BB00237BD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,20 +91,12 @@
 		4A7966A31D51D06100237BD9 /* DWScrollPicture */ = {
 			isa = PBXGroup;
 			children = (
+				4A485BFF1D543C28003539AD /* UIView+Extension.h */,
+				4A485C001D543C28003539AD /* UIView+Extension.m */,
 				4A7966A41D51D06100237BD9 /* DWScrollPicture.h */,
 				4A7966A51D51D06100237BD9 /* DWScrollPicture.m */,
-				4A7966A61D51D06100237BD9 /* UIView+Extension */,
 			);
 			path = DWScrollPicture;
-			sourceTree = "<group>";
-		};
-		4A7966A61D51D06100237BD9 /* UIView+Extension */ = {
-			isa = PBXGroup;
-			children = (
-				4A7966A71D51D06100237BD9 /* UIView+Extension.h */,
-				4A7966A81D51D06100237BD9 /* UIView+Extension.m */,
-			);
-			path = "UIView+Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A7966AA1D51D06100237BD9 /* UIView+Extension.m in Sources */,
+				4A485C011D543C28003539AD /* UIView+Extension.m in Sources */,
 				4A79668F1D51CFCC00237BD9 /* DWViewController.m in Sources */,
 				4A79668C1D51CFCC00237BD9 /* DWAppDelegate.m in Sources */,
 				4A7966AD1D51D19500237BD9 /* DWNewFeatures.m in Sources */,
