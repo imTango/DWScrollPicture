@@ -37,7 +37,6 @@
 /** 轮播图计时器 */
 @property (weak, nonatomic) NSTimer *shufflingTimer;
 
-
 @property (weak, nonatomic) UIScrollView *scrollView;
 
 @end
