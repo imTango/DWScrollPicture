@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
  
-  s.source       = { :git => "hhttps://github.com/dwanghello/DWScrollPicture.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/dwanghello/DWScrollPicture.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "/Users/cdk/Desktop/GITHUB/DWGithub/DWScrollPicture", "/Users/cdk/Desktop/GITHUB/DWGithub/DWScrollPicture/DWScrollPicture/DWScrollPicture/DWScrollPicture/**/*.{h,m}"
+  s.source_files  = "DWScrollPicture", "DWScrollPicture/DWScrollPicture/DWScrollPicture/DWScrollPicture/**/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
   # s.public_header_files = "Classes/**/*.h"
 
