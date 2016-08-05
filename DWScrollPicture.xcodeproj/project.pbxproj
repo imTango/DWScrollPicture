@@ -7,32 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A485C011D543C28003539AD /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C001D543C28003539AD /* UIView+Extension.m */; };
-		4A7966891D51CFCC00237BD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966881D51CFCC00237BD9 /* main.m */; };
-		4A79668C1D51CFCC00237BD9 /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A79668B1D51CFCC00237BD9 /* DWAppDelegate.m */; };
-		4A79668F1D51CFCC00237BD9 /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A79668E1D51CFCC00237BD9 /* DWViewController.m */; };
-		4A79669A1D51CFCC00237BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A7966981D51CFCC00237BD9 /* LaunchScreen.storyboard */; };
-		4A7966A91D51D06100237BD9 /* DWScrollPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966A51D51D06100237BD9 /* DWScrollPicture.m */; };
-		4A7966AD1D51D19500237BD9 /* DWNewFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7966AC1D51D19500237BD9 /* DWNewFeatures.m */; };
-		4A7966B11D51D5BB00237BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A7966B01D51D5BB00237BD9 /* Assets.xcassets */; };
+		4A485C101D545066003539AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C031D545066003539AD /* Assets.xcassets */; };
+		4A485C111D545066003539AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C041D545066003539AD /* LaunchScreen.storyboard */; };
+		4A485C121D545066003539AD /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C071D545066003539AD /* DWAppDelegate.m */; };
+		4A485C131D545066003539AD /* DWNewFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C091D545066003539AD /* DWNewFeatures.m */; };
+		4A485C141D545066003539AD /* DWScrollPicture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C0A1D545066003539AD /* DWScrollPicture.xcdatamodeld */; };
+		4A485C151D545066003539AD /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C0D1D545066003539AD /* DWViewController.m */; };
+		4A485C161D545066003539AD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C0E1D545066003539AD /* Info.plist */; };
+		4A485C171D545066003539AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C0F1D545066003539AD /* main.m */; };
+		4A485C1D1D545077003539AD /* DWScrollPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C1A1D545077003539AD /* DWScrollPicture.m */; };
+		4A485C1E1D545077003539AD /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C1C1D545077003539AD /* UIView+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A485BFF1D543C28003539AD /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		4A485C001D543C28003539AD /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		4A485C031D545066003539AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A485C051D545066003539AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A485C061D545066003539AD /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
+		4A485C071D545066003539AD /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
+		4A485C081D545066003539AD /* DWNewFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNewFeatures.h; sourceTree = "<group>"; };
+		4A485C091D545066003539AD /* DWNewFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNewFeatures.m; sourceTree = "<group>"; };
+		4A485C0B1D545066003539AD /* DWScrollPicture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DWScrollPicture.xcdatamodel; sourceTree = "<group>"; };
+		4A485C0C1D545066003539AD /* DWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWViewController.h; sourceTree = "<group>"; };
+		4A485C0D1D545066003539AD /* DWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWViewController.m; sourceTree = "<group>"; };
+		4A485C0E1D545066003539AD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A485C0F1D545066003539AD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A485C191D545077003539AD /* DWScrollPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollPicture.h; sourceTree = "<group>"; };
+		4A485C1A1D545077003539AD /* DWScrollPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollPicture.m; sourceTree = "<group>"; };
+		4A485C1B1D545077003539AD /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		4A485C1C1D545077003539AD /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		4A7966841D51CFCC00237BD9 /* DWScrollPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWScrollPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A7966881D51CFCC00237BD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4A79668A1D51CFCC00237BD9 /* DWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
-		4A79668B1D51CFCC00237BD9 /* DWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
-		4A79668D1D51CFCC00237BD9 /* DWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWViewController.h; sourceTree = "<group>"; };
-		4A79668E1D51CFCC00237BD9 /* DWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWViewController.m; sourceTree = "<group>"; };
-		4A7966991D51CFCC00237BD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4A79669B1D51CFCC00237BD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A7966A41D51D06100237BD9 /* DWScrollPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollPicture.h; sourceTree = "<group>"; };
-		4A7966A51D51D06100237BD9 /* DWScrollPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollPicture.m; sourceTree = "<group>"; };
-		4A7966AB1D51D19500237BD9 /* DWNewFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNewFeatures.h; sourceTree = "<group>"; };
-		4A7966AC1D51D19500237BD9 /* DWNewFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNewFeatures.m; sourceTree = "<group>"; };
-		4A7966B01D51D5BB00237BD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +49,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A485C021D545066003539AD /* ScrollPicture */ = {
+			isa = PBXGroup;
+			children = (
+				4A485C181D545077003539AD /* DWScrollPicture */,
+				4A485C031D545066003539AD /* Assets.xcassets */,
+				4A485C041D545066003539AD /* LaunchScreen.storyboard */,
+				4A485C061D545066003539AD /* DWAppDelegate.h */,
+				4A485C071D545066003539AD /* DWAppDelegate.m */,
+				4A485C081D545066003539AD /* DWNewFeatures.h */,
+				4A485C091D545066003539AD /* DWNewFeatures.m */,
+				4A485C0A1D545066003539AD /* DWScrollPicture.xcdatamodeld */,
+				4A485C0C1D545066003539AD /* DWViewController.h */,
+				4A485C0D1D545066003539AD /* DWViewController.m */,
+				4A485C0E1D545066003539AD /* Info.plist */,
+				4A485C0F1D545066003539AD /* main.m */,
+			);
+			path = ScrollPicture;
+			sourceTree = "<group>";
+		};
+		4A485C181D545077003539AD /* DWScrollPicture */ = {
+			isa = PBXGroup;
+			children = (
+				4A485C191D545077003539AD /* DWScrollPicture.h */,
+				4A485C1A1D545077003539AD /* DWScrollPicture.m */,
+				4A485C1B1D545077003539AD /* UIView+Extension.h */,
+				4A485C1C1D545077003539AD /* UIView+Extension.m */,
+			);
+			path = DWScrollPicture;
+			sourceTree = "<group>";
+		};
 		4A79667B1D51CFCC00237BD9 = {
 			isa = PBXGroup;
 			children = (
-				4A7966861D51CFCC00237BD9 /* DWScrollPicture */,
+				4A485C021D545066003539AD /* ScrollPicture */,
 				4A7966851D51CFCC00237BD9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,43 +93,6 @@
 				4A7966841D51CFCC00237BD9 /* DWScrollPicture.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4A7966861D51CFCC00237BD9 /* DWScrollPicture */ = {
-			isa = PBXGroup;
-			children = (
-				4A7966A31D51D06100237BD9 /* DWScrollPicture */,
-				4A79668A1D51CFCC00237BD9 /* DWAppDelegate.h */,
-				4A79668B1D51CFCC00237BD9 /* DWAppDelegate.m */,
-				4A79668D1D51CFCC00237BD9 /* DWViewController.h */,
-				4A79668E1D51CFCC00237BD9 /* DWViewController.m */,
-				4A7966AB1D51D19500237BD9 /* DWNewFeatures.h */,
-				4A7966AC1D51D19500237BD9 /* DWNewFeatures.m */,
-				4A7966B01D51D5BB00237BD9 /* Assets.xcassets */,
-				4A7966981D51CFCC00237BD9 /* LaunchScreen.storyboard */,
-				4A79669B1D51CFCC00237BD9 /* Info.plist */,
-				4A7966871D51CFCC00237BD9 /* Supporting Files */,
-			);
-			path = DWScrollPicture;
-			sourceTree = "<group>";
-		};
-		4A7966871D51CFCC00237BD9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4A7966881D51CFCC00237BD9 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4A7966A31D51D06100237BD9 /* DWScrollPicture */ = {
-			isa = PBXGroup;
-			children = (
-				4A485BFF1D543C28003539AD /* UIView+Extension.h */,
-				4A485C001D543C28003539AD /* UIView+Extension.m */,
-				4A7966A41D51D06100237BD9 /* DWScrollPicture.h */,
-				4A7966A51D51D06100237BD9 /* DWScrollPicture.m */,
-			);
-			path = DWScrollPicture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +152,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A7966B11D51D5BB00237BD9 /* Assets.xcassets in Resources */,
-				4A79669A1D51CFCC00237BD9 /* LaunchScreen.storyboard in Resources */,
+				4A485C101D545066003539AD /* Assets.xcassets in Resources */,
+				4A485C111D545066003539AD /* LaunchScreen.storyboard in Resources */,
+				4A485C161D545066003539AD /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,22 +165,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A485C011D543C28003539AD /* UIView+Extension.m in Sources */,
-				4A79668F1D51CFCC00237BD9 /* DWViewController.m in Sources */,
-				4A79668C1D51CFCC00237BD9 /* DWAppDelegate.m in Sources */,
-				4A7966AD1D51D19500237BD9 /* DWNewFeatures.m in Sources */,
-				4A7966A91D51D06100237BD9 /* DWScrollPicture.m in Sources */,
-				4A7966891D51CFCC00237BD9 /* main.m in Sources */,
+				4A485C171D545066003539AD /* main.m in Sources */,
+				4A485C131D545066003539AD /* DWNewFeatures.m in Sources */,
+				4A485C121D545066003539AD /* DWAppDelegate.m in Sources */,
+				4A485C1E1D545077003539AD /* UIView+Extension.m in Sources */,
+				4A485C141D545066003539AD /* DWScrollPicture.xcdatamodeld in Sources */,
+				4A485C1D1D545077003539AD /* DWScrollPicture.m in Sources */,
+				4A485C151D545066003539AD /* DWViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4A7966981D51CFCC00237BD9 /* LaunchScreen.storyboard */ = {
+		4A485C041D545066003539AD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4A7966991D51CFCC00237BD9 /* Base */,
+				4A485C051D545066003539AD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -279,7 +277,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DWScrollPicture/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ScrollPicture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.dwang.DWScrollPicture;
@@ -291,7 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DWScrollPicture/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ScrollPicture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.dwang.DWScrollPicture;
@@ -321,6 +319,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4A485C0A1D545066003539AD /* DWScrollPicture.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4A485C0B1D545066003539AD /* DWScrollPicture.xcdatamodel */,
+			);
+			currentVersion = 4A485C0B1D545066003539AD /* DWScrollPicture.xcdatamodel */;
+			path = DWScrollPicture.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4A79667C1D51CFCC00237BD9 /* Project object */;
 }

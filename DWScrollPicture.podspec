@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/dwanghello/DWScrollPicture.git", :tag => s.version.to_s }
 
 
-  s.source_files  =  "DWScrollPicture/DWScrollPicture/DWScrollPicture/*/**/{h,m}"
+  s.source_files  =  "DWScrollPicture/*"
  
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
