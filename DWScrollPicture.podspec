@@ -38,21 +38,12 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors are extracted from the SCM log. E.g. $ git log. CocoaPods also
-  #  accepts just a name if you'd rather not provide an email address.
-  #
-  #  Specify a social_media_url where others can refer to, for example a twitter
-  #  profile URL.
-  #
-
-  s.author             = { "dwang" => "dwang.hello@outlook.com" }
+  
+  s.author             = { "dwanghello" => "dwang.hello@outlook.com" }
   # Or just: s.author    = ""
   # s.authors            = { "" => "" }
   # s.social_media_url   = "http://twitter.com/"
@@ -63,8 +54,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-   s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  # s.platform     = :ios
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -90,8 +81,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "DWScrollPicture", "DWScrollPicture/DWScrollPicture/DWScrollPicture/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "/Users/cdk/Desktop/GITHUB/DWGithub/DWScrollPicture", "/Users/cdk/Desktop/GITHUB/DWGithub/DWScrollPicture/DWScrollPicture/DWScrollPicture/DWScrollPicture/**/*.{h,m}"
+  #s.exclude_files = "Classes/Exclude"
   # s.public_header_files = "Classes/**/*.h"
 
 
