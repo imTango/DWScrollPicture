@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author             = { "dwanghello" => "dwang.hello@outlook.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/dwanghello/DWScrollPicture.git", :tag => s.version }
-  s.source_files  =  "DWScrollPicture/*"
+  s.source_files  =  "DWScrollPictures/*"
   s.frameworks = "UIKit", "Foundation"
 end
