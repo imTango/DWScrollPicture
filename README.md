@@ -3,7 +3,10 @@
 #轻松实现新特性控制器与轮播图
 #如果感觉不错，请Star我
 ---
-#准备工作
+#CocoaPods
+	pod 'DWScrollPictures'
+
+#Clone
 ###首先将DWScrollPictures文件夹导入到项目中
 ---
 #第一步-新特性

@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) DWScrollPictures *rebirth;
 
+@property (strong, nonatomic) DWScrollPictures *networkongrebirth;
+
 @end
 
 @implementation DWViewController
@@ -26,6 +28,15 @@
     return _rebirth;
 }
 
+- (DWScrollPictures *)networkongrebirth {
+    
+    if (!_networkongrebirth) {
+        _networkongrebirth = [[DWScrollPictures alloc] init];
+    }
+    
+    return _networkongrebirth;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -35,8 +46,14 @@
     
     [self.rebirth setPageNormalColor:[UIColor whiteColor]];
     
-    [self.rebirth dw_SetShufflingFigureView:self.view sizeY:0 height:self.view.frame.size.height/2 pageY:50 imageArray:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] timeInterval:2.0 animateTimer:1.0];
+    [self.networkongrebirth setPageSelctColor:[UIColor blueColor]];
     
+    [self.networkongrebirth setPageNormalColor:[UIColor whiteColor]];
+    
+    [self.rebirth dw_SetShufflingFigureView:self.view sizeY:0 height:self.view.frame.size.height/2 pageY:self.view.frame.size.height/2 + 50 imageNameArray:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] timeInterval:2.0 animateTimer:1.0];
+    
+    
+    [self.networkongrebirth dw_SetNetworkingShufflingFigureView:self.view sizeY:self.view.frame.size.height/2 height:self.view.frame.size.height/2 pageY:self.view.frame.size.height / 20 imageLinkArray:@[@"http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/bd315c6034a85edf66e6617e41540923dd547501.jpg",@"http://b.hiphotos.baidu.com/image/pic/item/ae51f3deb48f8c547d26527232292df5e1fe7ff2.jpg"] timeInterval:1.25 animateTimer:1.0];
     
     UIButton *stop = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2 + 20, 100, 30)];
     
@@ -84,6 +101,9 @@
 - (void)stop {
     
     [self.rebirth dw_stopShuffling];
+   
+     [self.networkongrebirth dw_stopShuffling];
+    
     
 }
 
@@ -92,12 +112,17 @@
     
     [self.rebirth dw_startShuffling];
     
+    [self.networkongrebirth dw_startShuffling];
+    
+    
 }
 
 //删除page
 - (void)remove {
     
     [self.rebirth dw_removePageControl];
+    
+    [self.networkongrebirth dw_removePageControl];
     
 }
 

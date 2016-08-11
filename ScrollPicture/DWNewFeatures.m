@@ -63,7 +63,7 @@
 }
 
 
-- (void)dw_NewFeaturesPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount{
+- (void)dw_nowPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount{
     
     //最后一张新特性图片
     if (pageCount > imageAllCount) {

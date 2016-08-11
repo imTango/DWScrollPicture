@@ -18,7 +18,7 @@
  *  @param pageCount  当前所在界面索引
  *  @param imageCount 新特性图片总数
  */
-- (void)dw_NewFeaturesPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount;
+- (void)dw_nowPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount;
 
 @end
 
@@ -60,7 +60,7 @@
 
 
 /**
- *  设置轮播图
+ *  设置本地图片轮播图
  *
  *  @param view         当前控制器View
  *  @param sizeY        轮播视图Y值
@@ -70,7 +70,20 @@
  *  @param timeInterval 轮播图轮播时间
  *  @param animateTimer 轮播图完成一次轮播的时间
  */
-- (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageArray:(NSArray *)imageArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer;
+- (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageNameArray:(NSArray *)imageNameArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer;
+
+/**
+ *  设置网络图片轮播图
+ *
+ *  @param view           当前控制器View
+ *  @param sizeY          轮播视图Y值
+ *  @param height         轮播图高度
+ *  @param pageY          pageController高度
+ *  @param imageLinkArray 轮播图数组
+ *  @param timeInterval   轮播图轮播时间
+ *  @param animateTimer   轮播图完成一次轮播的时间
+ */
+- (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer;
 
 /**
  *  删除PageController
