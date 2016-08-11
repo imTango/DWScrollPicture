@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "DWScrollPictures"
-  s.version          = "0.0.8"
+  s.version          = "0.0.9"
   s.summary          = "A simple new features and shuffling figure of lightweight framework."
   s.description      = <<-DESC
                        t is a marquee view used on iOS, A simple new features and shuffling figure of lightweight framewor.
