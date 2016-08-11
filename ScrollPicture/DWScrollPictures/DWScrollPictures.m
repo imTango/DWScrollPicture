@@ -4,7 +4,8 @@
 //
 //  Created by cdk on 16/8/2.
 //  Copyright © 2016年 dwang_sui. All rights reserved.
-//
+//----------------------------QQ:739814184-----------------------
+//----------------------------e-mail:dwang.hello@outlook.com-------------------
 
 #import "DWScrollPictures.h"
 #import "UIView+Extension.h"
