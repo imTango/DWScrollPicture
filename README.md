@@ -73,7 +73,7 @@
 	@property (strong, nonatomic) DWScrollPictures *rebirth;
 ---
 #第三步
-#####开始设置轮播图片
+#####开始设置本地轮播图片
 	
 	//设置pageController选中时的颜色
 	[self.rebirth setPageSelctColor:[pageController选中时的颜色]];
@@ -81,10 +81,12 @@
 	//设置pageController未选中时的颜色
 	[self.rebirth setPageNormalColor:[pageController未选中时的颜色]];
 	
-	[self.rebirth dw_SetShufflingFigureView:self.view sizeY:0 height:self.view.frame.size.height/2 pageY:50 imageArray:@[@"图片名称数组,暂时只能为本地图片"] timeInterval:轮播时间 animateTimer:完成每次的轮播的时间];
-	
+	[self.rebirth dw_SetShufflingFigureView:所在视图 sizeY:轮播图Y值 height:轮播图高度 pageY:pageY值 imageArray:@[@"本地图片名称数组"] timeInterval:轮播时间 animateTimer:完成每次的轮播的时间];
+#####开始设置网络轮播图片
+	[self.networkongrebirth dw_SetNetworkingShufflingFigureView:所在视图  sizeY:轮播图Y值 height:轮播图高度 pageY:pageY值imageLinkArray:@[@"网络图片链接数组"] timeInterval:轮播时间 animateTimer:完成每次的轮播的时间];
+---	
 	//开始进行轮播
-	self.rebirth dw_startShuffling];
+	[self.rebirth dw_startShuffling];
 	
 	//停止自动轮播
 	[self.rebirth dw_stopShuffling];
