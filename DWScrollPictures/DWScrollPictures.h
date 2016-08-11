@@ -49,7 +49,7 @@
 + (void)dw_AppdelegateNewFeaturesWindow:(UIWindow *)window newFeaturesVC:(id)newFeaturesVC mainVC:(id)mainVC;
 
 /**
- *  设置引导图
+ *  设置引导图/本地
  *
  *  @param view                          当前控制器View
  *  @param delegate                      代理遵守者
@@ -58,7 +58,14 @@
  */
 - (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray pageImageView:(void(^) (UIView *pageImageView ,int imageCount, int imageAllCount))pageImageView;
 
-
+/**
+ *  设置引导图/网络
+ *
+ *  @param view                          当前控制器View
+ *  @param delegate                      代理遵守者
+ *  @param imageNameArray                引导图数组
+ *  @param pageImageView                 imageView/某个imageView/imageView总量
+ */
 - (void)dw_SetNetworkingNewFeaturesView:(UIView *)view delegate:(id)delegate imageLinkArray:(NSArray *)imageLinkArray pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView;
 
 /**
