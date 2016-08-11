@@ -6,7 +6,7 @@
 #CocoaPods
 	pod 'DWScrollPictures'
 #Clone
-###
+###git clone https://github.com/dwanghello/DWScrollPicture.git
 ###将DWScrollPictures文件夹导入到项目中
 ---
 #第一步-新特性
