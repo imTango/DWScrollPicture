@@ -4,6 +4,7 @@
 #如果感觉不错，请Star我
 ---
 #CocoaPods
+	platform :ios, '8.0'
 	pod 'DWScrollPictures'
 
 #Clone
