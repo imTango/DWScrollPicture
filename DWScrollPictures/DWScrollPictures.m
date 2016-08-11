@@ -23,8 +23,11 @@
 /** pageController */
 @property (weak, nonatomic) UIPageControl       *pageControl;
 
-/** 新特性图片数组 */
+/** 新特性本地图片数组 */
 @property (strong, nonatomic) NSArray           *NewFeaturesImageNameArray;
+
+/** 新特性网络图片数组 */
+@property (strong, nonatomic) NSArray           *NewFeaturesImageLinkArray;
 
 /** 轮播图本地图片数组 */
 @property (strong, nonatomic) NSArray           *shufflingFigureImageNameArray;
@@ -77,7 +80,7 @@
     [window makeKeyAndVisible];
 }
 
-#pragma mark ---设置新特性页面
+#pragma mark ---设置新特性页面/本地图片
 - (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
     
     self.NewFeaturesImageNameArray = imageNameArray;
@@ -164,6 +167,112 @@
     pageControl.centerX = view.centerX;
     pageControl.y = view.height - 100;
     
+    
+}
+
+#pragma mark ---设置新特性页面/网络图片
+- (void)dw_SetNetworkingNewFeaturesView:(UIView *)view delegate:(id)delegate imageLinkArray:(NSArray *)imageLinkArray pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
+    
+    self.NewFeaturesImageLinkArray = imageLinkArray;
+    
+    self.delegate = delegate;
+    
+    //初始化一个ScrollView
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:DWScreen_Frame];
+    
+    self.scrollView = scrollView;
+    
+    //隐藏水平方向的滚动条
+    scrollView.showsHorizontalScrollIndicator = NO;
+    
+    //开启分页
+    scrollView.pagingEnabled = YES;
+    
+    //监听滑动-->成为代理
+    scrollView.delegate = self;
+    
+    for (int i = 0; i < [imageLinkArray count]; i ++) {
+        
+        //循环添加imageView
+        UIImageView *imageView = [[UIImageView alloc] init];
+        
+        NSURL *url = [NSURL URLWithString:imageLinkArray[i]];
+        
+        dispatch_queue_t queue =dispatch_queue_create("loadImage",NULL);
+        
+        dispatch_async(queue, ^{
+            
+            NSData *resultData = [NSData dataWithContentsOfURL:url];
+            
+            UIImage *img = [UIImage imageWithData:resultData];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                imageView.image = img;
+                
+            });
+            
+        });
+
+        //设置大小与位置
+        imageView.size = scrollView.size;
+        
+        imageView.x = i * scrollView.width;
+        
+        [scrollView addSubview:imageView];
+        
+        
+        if (pageImageView) {
+            
+            imageView.userInteractionEnabled = true;
+            
+            pageImageView(imageView,i, (int)[imageLinkArray count] - 1);
+            
+        }
+    }
+    
+    //设置scrollView的内容大小
+    [scrollView setContentSize:CGSizeMake([imageLinkArray count] * scrollView.width, 0)];
+    
+    [view addSubview:scrollView];
+    
+    
+    //添加pageControl
+    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    
+    //设置显示几页
+    pageControl.numberOfPages = [imageLinkArray count];
+    
+    //选中的颜色
+    if (self.pageSelctColor) {
+        
+        pageControl.currentPageIndicatorTintColor = self.pageSelctColor;
+        
+    }else {
+        
+        pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+        
+    }
+    
+    //未选中的颜色
+    if (self.pageNormalColor) {
+        
+        pageControl.pageIndicatorTintColor = self.pageNormalColor;
+        
+    }else {
+        
+        pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        
+    }
+    
+    [view addSubview:pageControl];
+    
+    self.pageControl = pageControl;
+    
+    //设置位置
+    pageControl.centerX = view.centerX;
+    pageControl.y = view.height - 100;
+
     
 }
 
@@ -401,18 +510,33 @@
     
     self.pageControl.currentPage = (int)(page + 0.5);
     
-    if (page >= self.NewFeaturesImageNameArray.count - 1) {
+    if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1) {
         
         [DWUser_Defaults setBool:YES forKey:@"lastPage"];
         
     }
     
-    //代理方法
-    if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
+    if (self.NewFeaturesImageNameArray) {
         
-        [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageNameArray.count - 1];
+        //代理方法
+        if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
+            
+            [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageNameArray.count - 1];
+            
+        }
+
+    }else if (self.NewFeaturesImageLinkArray) {
+        
+        //代理方法
+        if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
+            
+            [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageLinkArray.count - 1];
+            
+        }
+
         
     }
+    
     
 }
 

@@ -59,6 +59,8 @@
 - (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray pageImageView:(void(^) (UIView *pageImageView ,int imageCount, int imageAllCount))pageImageView;
 
 
+- (void)dw_SetNetworkingNewFeaturesView:(UIView *)view delegate:(id)delegate imageLinkArray:(NSArray *)imageLinkArray pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView;
+
 /**
  *  设置本地图片轮播图
  *
