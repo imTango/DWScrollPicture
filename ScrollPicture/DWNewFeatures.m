@@ -7,12 +7,12 @@
 //
 
 #import "DWNewFeatures.h"
-#import "DWScrollPicture.h"
+#import "DWScrollPictures.h"
 #import "DWViewController.h"
 
 @interface DWNewFeatures ()<DWScrollerPageCountDelegate>
 
-@property (strong, nonatomic) DWScrollPicture *features;
+@property (strong, nonatomic) DWScrollPictures *features;
 
 @end
 
@@ -23,11 +23,11 @@
 
 @implementation DWNewFeatures
 
-- (DWScrollPicture *)features {
+- (DWScrollPictures *)features {
     
     if (!_features) {
         
-        _features = [[DWScrollPicture alloc] init];
+        _features = [[DWScrollPictures alloc] init];
     }
     return _features;
     

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A21BE251D5B0119009F206B /* DWScrollPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A21BE221D5B0119009F206B /* DWScrollPicture.m */; };
+		4A21BE251D5B0119009F206B /* DWScrollPictures.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A21BE221D5B0119009F206B /* DWScrollPictures.m */; };
 		4A21BE261D5B0119009F206B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A21BE241D5B0119009F206B /* UIView+Extension.m */; };
 		4A485C101D545066003539AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C031D545066003539AD /* Assets.xcassets */; };
 		4A485C111D545066003539AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C041D545066003539AD /* LaunchScreen.storyboard */; };
@@ -20,8 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A21BE211D5B0119009F206B /* DWScrollPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollPicture.h; sourceTree = "<group>"; };
-		4A21BE221D5B0119009F206B /* DWScrollPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollPicture.m; sourceTree = "<group>"; };
+		4A21BE211D5B0119009F206B /* DWScrollPictures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollPictures.h; sourceTree = "<group>"; };
+		4A21BE221D5B0119009F206B /* DWScrollPictures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollPictures.m; sourceTree = "<group>"; };
 		4A21BE231D5B0119009F206B /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		4A21BE241D5B0119009F206B /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		4A485C031D545066003539AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,8 +52,8 @@
 		4A21BE201D5B0119009F206B /* DWScrollPictures */ = {
 			isa = PBXGroup;
 			children = (
-				4A21BE211D5B0119009F206B /* DWScrollPicture.h */,
-				4A21BE221D5B0119009F206B /* DWScrollPicture.m */,
+				4A21BE211D5B0119009F206B /* DWScrollPictures.h */,
+				4A21BE221D5B0119009F206B /* DWScrollPictures.m */,
 				4A21BE231D5B0119009F206B /* UIView+Extension.h */,
 				4A21BE241D5B0119009F206B /* UIView+Extension.m */,
 			);
@@ -170,7 +170,7 @@
 				4A485C121D545066003539AD /* DWAppDelegate.m in Sources */,
 				4A21BE261D5B0119009F206B /* UIView+Extension.m in Sources */,
 				4A485C141D545066003539AD /* DWScrollPicture.xcdatamodeld in Sources */,
-				4A21BE251D5B0119009F206B /* DWScrollPicture.m in Sources */,
+				4A21BE251D5B0119009F206B /* DWScrollPictures.m in Sources */,
 				4A485C151D545066003539AD /* DWViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

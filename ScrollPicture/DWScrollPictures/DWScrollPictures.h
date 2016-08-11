@@ -22,7 +22,7 @@
 
 @end
 
-@interface DWScrollPicture : NSObject
+@interface DWScrollPictures : NSObject
 
 /**
  *  pageController选中时的颜色

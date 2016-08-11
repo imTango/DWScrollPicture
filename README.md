@@ -1,15 +1,15 @@
-# DWScrollPicture
+# DWScrollPictures
 ---
 #轻松实现新特性控制器与轮播图
 #如果感觉不错，请Star我
 ---
 #准备工作
-###首先将DWScrollPicture文件夹导入到项目中
+###首先将DWScrollPictures文件夹导入到项目中
 ---
 #第一步-新特性
 ####引入头文件
     在AppDelegate.m中引入头文件
-    #import "DWScrollPicture.h"
+    #import "DWScrollPictures.h"
 	#import "新特性控制器.h"
 	#import "首页控制器.h"
 ---
@@ -17,25 +17,25 @@
 ####在- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}方法中写入以下代码
 	 self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [DWScrollPicture dw_AppdelegateNewFeaturesWindow:self.window newFeaturesVC:[[新特性控制器 alloc] init] mainVC:[[首页控制器 alloc] init]];
+    [DWScrollPictures dw_AppdelegateNewFeaturesWindow:self.window newFeaturesVC:[[新特性控制器 alloc] init] mainVC:[[首页控制器 alloc] init]];
 	
 	return YES;
 ---
 #第三步-新特性
 ####新特性控制器中的实现
 #####引入头文件，声明代理方法
-	#import "DWScrollPicture.h"
+	#import "DWScrollPictures.h"
 	<DWScrollerPageCountDelegate>
 ---
 ####在@interface中添加以下代码
-	@property (strong, nonatomic) DWScrollPicture *features;
+	@property (strong, nonatomic) DWScrollPictures *features;
 ---
 ####懒加载
-	- (DWScrollPicture *)features {
+	- (DWScrollPictures *)features {
     
    			 if (!_features) {
         
-     	   _features = [[DWScrollPicture alloc] init];
+     	   _features = [[DWScrollPictures alloc] init];
      	   
    		 }	
    		 
@@ -63,11 +63,11 @@
 #自动轮播图
 ##第一步
 #####在需要使用轮播图的地方引入头文件
-	#import "DWScrollPicture.h"
+	#import "DWScrollPictures.h"
 ---
 ##第二步
 #####声明对象
-	@property (strong, nonatomic) DWScrollPicture *rebirth;
+	@property (strong, nonatomic) DWScrollPictures *rebirth;
 ---
 #第三步
 #####开始设置轮播图片

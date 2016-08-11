@@ -7,20 +7,20 @@
 //
 
 #import "DWViewController.h"
-#import "DWScrollPicture.h"
+#import "DWScrollPictures.h"
 
 @interface DWViewController ()
 
-@property (strong, nonatomic) DWScrollPicture *rebirth;
+@property (strong, nonatomic) DWScrollPictures *rebirth;
 
 @end
 
 @implementation DWViewController
 
-- (DWScrollPicture *)rebirth {
+- (DWScrollPictures *)rebirth {
     
     if (!_rebirth) {
-        _rebirth = [[DWScrollPicture alloc] init];
+        _rebirth = [[DWScrollPictures alloc] init];
     }
     
     return _rebirth;

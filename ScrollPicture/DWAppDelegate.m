@@ -7,7 +7,7 @@
 //
 
 #import "DWAppDelegate.h"
-#import "DWScrollPicture.h"
+#import "DWScrollPictures.h"
 #import "DWViewController.h"
 #import "DWNewFeatures.h"
 
@@ -21,7 +21,7 @@
     
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [DWScrollPicture dw_AppdelegateNewFeaturesWindow:self.window
+    [DWScrollPictures dw_AppdelegateNewFeaturesWindow:self.window
                                                       newFeaturesVC:[[DWNewFeatures alloc] init]
                                                              mainVC:[[DWViewController alloc] init]];
     

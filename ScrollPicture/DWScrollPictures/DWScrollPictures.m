@@ -6,10 +6,10 @@
 //  Copyright © 2016年 dwang_sui. All rights reserved.
 //
 
-#import "DWScrollPicture.h"
+#import "DWScrollPictures.h"
 #import "UIView+Extension.h"
 
-@interface DWScrollPicture ()<UIScrollViewDelegate>
+@interface DWScrollPictures ()<UIScrollViewDelegate>
 
 //获取屏幕 宽度、高度
 #define DWScreen_Frame [UIScreen mainScreen].bounds
@@ -42,7 +42,7 @@
 @end
 
 #define key_ShortVersion @"key_ShortVersion"
-@implementation DWScrollPicture
+@implementation DWScrollPictures
 
 #pragma mark ---Appdelegate设置引导页控制器
 + (void)dw_AppdelegateNewFeaturesWindow:(UIWindow *)window newFeaturesVC:(id)newFeaturesVC mainVC:(id)mainVC {
@@ -74,7 +74,7 @@
 }
 
 #pragma mark ---设置引导页
-- (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray pageImageView:(void (^) (UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
+- (void)dw_SetNewFeaturesView:(UIView *)view delegate:(id)delegate imageName:(NSArray *)imageNameArray pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
     
     self.imageNameArray = imageNameArray;
     
