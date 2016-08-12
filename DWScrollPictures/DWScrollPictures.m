@@ -505,6 +505,20 @@
     
 }
 
+#pragma mark ---开始移动
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+    [self dw_stopShuffling];
+    
+}
+
+#pragma mark ---移动完成
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+    [self dw_startShuffling];
+    
+}
+
 #pragma mark ---开始进行轮播
 - (void)startShuffling {
     
