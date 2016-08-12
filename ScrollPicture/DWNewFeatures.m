@@ -10,7 +10,7 @@
 #import "DWScrollPictures.h"
 #import "DWViewController.h"
 
-@interface DWNewFeatures ()<DWScrollerPageCountDelegate>
+@interface DWNewFeatures ()<DWScrollerPictureDelegate>
 
 @property (strong, nonatomic) DWScrollPictures *features;
 

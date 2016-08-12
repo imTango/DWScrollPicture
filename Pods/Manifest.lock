@@ -1,0 +1,12 @@
+PODS:
+  - DWSwipeGestures (0.0.2)
+
+DEPENDENCIES:
+  - DWSwipeGestures
+
+SPEC CHECKSUMS:
+  DWSwipeGestures: 5cbefdee245c6b3ffe005c9e1ff0c0c03988a280
+
+PODFILE CHECKSUM: f489aae24a565f543cfc3ac5db6617e9185c7810
+
+COCOAPODS: 1.0.1

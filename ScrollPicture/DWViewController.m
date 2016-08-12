@@ -8,17 +8,21 @@
 
 #import "DWViewController.h"
 #import "DWScrollPictures.h"
+#import "DWPictureController.h"
 
-@interface DWViewController ()
+@interface DWViewController ()<DWScrollerPictureDelegate>
 
+//本地
 @property (strong, nonatomic) DWScrollPictures *rebirth;
 
-@property (strong, nonatomic) DWScrollPictures *networkongrebirth;
+//网络
+@property (strong, nonatomic) DWScrollPictures *networkongRebirth;
 
 @end
 
 @implementation DWViewController
 
+//本地
 - (DWScrollPictures *)rebirth {
     
     if (!_rebirth) {
@@ -28,14 +32,16 @@
     return _rebirth;
 }
 
-- (DWScrollPictures *)networkongrebirth {
+//网络
+- (DWScrollPictures *)networkongRebirth {
     
-    if (!_networkongrebirth) {
-        _networkongrebirth = [[DWScrollPictures alloc] init];
+    if (!_networkongRebirth) {
+        _networkongRebirth = [[DWScrollPictures alloc] init];
     }
     
-    return _networkongrebirth;
+    return _networkongRebirth;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,14 +52,40 @@
     
     [self.rebirth setPageNormalColor:[UIColor whiteColor]];
     
-    [self.networkongrebirth setPageSelctColor:[UIColor blueColor]];
+    [self.networkongRebirth setPageSelctColor:[UIColor blueColor]];
     
-    [self.networkongrebirth setPageNormalColor:[UIColor whiteColor]];
+    [self.networkongRebirth setPageNormalColor:[UIColor whiteColor]];
     
-    [self.rebirth dw_SetShufflingFigureView:self.view sizeY:0 height:self.view.frame.size.height/2 pageY:self.view.frame.size.height/2 + 50 imageNameArray:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] timeInterval:2.0 animateTimer:1.0];
+    self.rebirth.delegate = self;
+    
+    self.networkongRebirth.delegate = self;
+    
+    [self.rebirth dw_SetShufflingFigureView:self.view
+                  sizeY:0
+                  height:self.view.frame.size.height/2
+                  pageY:self.view.frame.size.height/2 + 50
+                  imageNameArray:@[
+                  @"IMG_1.JPG",
+                  @"IMG_2.JPG",
+                  @"IMG_3.JPG",
+                  @"IMG_4.JPG"]
+                  timeInterval:2.0
+                  animateTimer:1.0
+                  pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {}];
     
     
-    [self.networkongrebirth dw_SetNetworkingShufflingFigureView:self.view sizeY:self.view.frame.size.height/2 height:self.view.frame.size.height/2 pageY:self.view.frame.size.height / 20 imageLinkArray:@[@"http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/bd315c6034a85edf66e6617e41540923dd547501.jpg",@"http://b.hiphotos.baidu.com/image/pic/item/ae51f3deb48f8c547d26527232292df5e1fe7ff2.jpg"] timeInterval:1.25 animateTimer:1.0];
+    [self.networkongRebirth dw_SetNetworkingShufflingFigureView:self.view
+                            sizeY:self.view.frame.size.height/2
+                            height:self.view.frame.size.height/2
+                            pageY:self.view.frame.size.height / 20 imageLinkArray:@[
+                            @"http://file.ipadown.com/uploads/jiecao/20160125022502217.jpg",
+                            @"http://file.ipadown.com/uploads/jiecao/20160124022501270.jpg",
+                            @"http://file.ipadown.com/uploads/jiecao/20160123022502287.jpg",
+                            @"http://file.ipadown.com/uploads/jiecao/20160122022502736.jpg",
+                            @"http://file.ipadown.com/uploads/jiecao/20160121022506212.jpg"]
+                            timeInterval:1.25
+                            animateTimer:1.0
+                            pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {}];
     
     UIButton *stop = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2 + 20, 100, 30)];
     
@@ -102,7 +134,7 @@
     
     [self.rebirth dw_stopShuffling];
    
-     [self.networkongrebirth dw_stopShuffling];
+     [self.networkongRebirth dw_stopShuffling];
     
     
 }
@@ -112,7 +144,7 @@
     
     [self.rebirth dw_startShuffling];
     
-    [self.networkongrebirth dw_startShuffling];
+    [self.networkongRebirth dw_startShuffling];
     
     
 }
@@ -122,8 +154,24 @@
     
     [self.rebirth dw_removePageControl];
     
-    [self.networkongrebirth dw_removePageControl];
+    [self.networkongRebirth dw_removePageControl];
     
 }
+
+- (void) dw_ShufflingFigureSelectImageCount:(NSInteger)index {
+    
+    DWPictureController *picVC = [[DWPictureController alloc] init];
+    
+    self.delegate = picVC;
+    
+    if ([self.delegate respondsToSelector:@selector(dw_SetLabelTitle:)]) {
+        
+        [self.delegate dw_SetLabelTitle:index];
+        
+    }
+    [self presentViewController:picVC animated:YES completion:nil];
+    
+}
+
 
 @end

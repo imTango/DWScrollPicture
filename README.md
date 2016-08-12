@@ -94,3 +94,11 @@
 	
 	//删除pageController
 	[self.rebirth dw_removePageControl];
+---
+####点击轮播图图片代理方法
+	/**
+	 *  获取被点击的轮播图索引
+	 *
+	 *  @param index 被点击的轮播图索引
+	 */
+	- (void)dw_ShufflingFigureSelectImageCount:(NSInteger)index;

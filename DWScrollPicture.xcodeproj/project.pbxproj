@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A34E4CD1D5DA8CE008BAADD /* DWPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34E4CC1D5DA8CE008BAADD /* DWPictureController.m */; };
 		4A485C101D545066003539AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C031D545066003539AD /* Assets.xcassets */; };
 		4A485C111D545066003539AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A485C041D545066003539AD /* LaunchScreen.storyboard */; };
 		4A485C121D545066003539AD /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C071D545066003539AD /* DWAppDelegate.m */; };
@@ -17,9 +18,13 @@
 		4A485C171D545066003539AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A485C0F1D545066003539AD /* main.m */; };
 		4A5079E81D5C19A3003C3B55 /* DWScrollPictures.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5079E51D5C19A3003C3B55 /* DWScrollPictures.m */; };
 		4A5079E91D5C19A3003C3B55 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5079E71D5C19A3003C3B55 /* UIView+Extension.m */; };
+		EEA2A7E848F2DBED499FE55F /* libPods-DWScrollPicture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4315189DDBAE0228AC8092D /* libPods-DWScrollPicture.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2898E9A496B464CF1DA4CAAA /* Pods-DWScrollPicture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DWScrollPicture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DWScrollPicture/Pods-DWScrollPicture.debug.xcconfig"; sourceTree = "<group>"; };
+		4A34E4CB1D5DA8CE008BAADD /* DWPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPictureController.h; sourceTree = "<group>"; };
+		4A34E4CC1D5DA8CE008BAADD /* DWPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPictureController.m; sourceTree = "<group>"; };
 		4A485C031D545066003539AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A485C051D545066003539AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A485C061D545066003539AD /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
@@ -36,6 +41,8 @@
 		4A5079E61D5C19A3003C3B55 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		4A5079E71D5C19A3003C3B55 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		4A7966841D51CFCC00237BD9 /* DWScrollPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWScrollPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F425379ED76028BBE43CC6F /* Pods-DWScrollPicture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DWScrollPicture.release.xcconfig"; path = "Pods/Target Support Files/Pods-DWScrollPicture/Pods-DWScrollPicture.release.xcconfig"; sourceTree = "<group>"; };
+		A4315189DDBAE0228AC8092D /* libPods-DWScrollPicture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DWScrollPicture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEA2A7E848F2DBED499FE55F /* libPods-DWScrollPicture.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +69,8 @@
 				4A485C0A1D545066003539AD /* DWScrollPicture.xcdatamodeld */,
 				4A485C0C1D545066003539AD /* DWViewController.h */,
 				4A485C0D1D545066003539AD /* DWViewController.m */,
+				4A34E4CB1D5DA8CE008BAADD /* DWPictureController.h */,
+				4A34E4CC1D5DA8CE008BAADD /* DWPictureController.m */,
 				4A485C0E1D545066003539AD /* Info.plist */,
 				4A485C0F1D545066003539AD /* main.m */,
 			);
@@ -84,6 +94,8 @@
 				4A5079E31D5C19A3003C3B55 /* DWScrollPictures */,
 				4A485C021D545066003539AD /* ScrollPicture */,
 				4A7966851D51CFCC00237BD9 /* Products */,
+				C8D26CAFDB20FFC045D33990 /* Pods */,
+				FCA0688EC248FA1BCAE62DD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +107,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C8D26CAFDB20FFC045D33990 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2898E9A496B464CF1DA4CAAA /* Pods-DWScrollPicture.debug.xcconfig */,
+				4F425379ED76028BBE43CC6F /* Pods-DWScrollPicture.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FCA0688EC248FA1BCAE62DD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4315189DDBAE0228AC8092D /* libPods-DWScrollPicture.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,9 +131,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A79669E1D51CFCC00237BD9 /* Build configuration list for PBXNativeTarget "DWScrollPicture" */;
 			buildPhases = (
+				5E786D4400F3D1A318E80088 /* [CP] Check Pods Manifest.lock */,
 				4A7966801D51CFCC00237BD9 /* Sources */,
 				4A7966811D51CFCC00237BD9 /* Frameworks */,
 				4A7966821D51CFCC00237BD9 /* Resources */,
+				4C7FD8826E288450AFFD8F57 /* [CP] Embed Pods Frameworks */,
+				8C2B7F17DD7E3358D8C626B3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -160,6 +192,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4C7FD8826E288450AFFD8F57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DWScrollPicture/Pods-DWScrollPicture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E786D4400F3D1A318E80088 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8C2B7F17DD7E3358D8C626B3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DWScrollPicture/Pods-DWScrollPicture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4A7966801D51CFCC00237BD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -168,6 +248,7 @@
 				4A485C171D545066003539AD /* main.m in Sources */,
 				4A485C131D545066003539AD /* DWNewFeatures.m in Sources */,
 				4A485C121D545066003539AD /* DWAppDelegate.m in Sources */,
+				4A34E4CD1D5DA8CE008BAADD /* DWPictureController.m in Sources */,
 				4A5079E91D5C19A3003C3B55 /* UIView+Extension.m in Sources */,
 				4A485C141D545066003539AD /* DWScrollPicture.xcdatamodeld in Sources */,
 				4A5079E81D5C19A3003C3B55 /* DWScrollPictures.m in Sources */,
@@ -275,6 +356,7 @@
 		};
 		4A79669F1D51CFCC00237BD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2898E9A496B464CF1DA4CAAA /* Pods-DWScrollPicture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/ScrollPicture/Info.plist";
@@ -287,6 +369,7 @@
 		};
 		4A7966A01D51CFCC00237BD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F425379ED76028BBE43CC6F /* Pods-DWScrollPicture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/ScrollPicture/Info.plist";

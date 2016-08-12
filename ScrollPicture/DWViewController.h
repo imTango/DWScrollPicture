@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DWIndexDelegate <NSObject>
+
+@optional
+- (void)dw_SetLabelTitle:(NSInteger)index;
+
+@end
+
 @interface DWViewController : UIViewController
 
+@property (assign, nonatomic) id<DWIndexDelegate> delegate;
 
 @end
 

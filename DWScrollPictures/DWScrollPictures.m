@@ -9,6 +9,7 @@
 
 #import "DWScrollPictures.h"
 #import "UIView+Extension.h"
+#import "DWSwipeGestures.h"
 
 @interface DWScrollPictures ()<UIScrollViewDelegate>
 
@@ -43,6 +44,13 @@
 
 /** 轮播图计时器 */
 @property (weak, nonatomic) NSTimer             *shufflingTimer;
+
+/** 点击图片手势 */
+@property (strong, nonatomic) DWSwipeGestures   *tapGesture;
+
+/** 被点击图片的tag值 */
+@property (assign, nonatomic) NSInteger         imagetag;
+
 
 @property (weak, nonatomic) UIScrollView        *scrollView;
 
@@ -87,19 +95,9 @@
     
     self.delegate = delegate;
     
-    //初始化一个ScrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:DWScreen_Frame];
+    UIScrollView *scrollView = [self dw_loadScrollerViewSizeY:0 Height:0];
     
-    self.scrollView = scrollView;
-    
-    //隐藏水平方向的滚动条
-    scrollView.showsHorizontalScrollIndicator = NO;
-    
-    //开启分页
-    scrollView.pagingEnabled = YES;
-    
-    //监听滑动-->成为代理
-    scrollView.delegate = self;
+    scrollView.frame = DWScreen_Frame;
     
     for (int i = 0; i < [imageNameArray count]; i ++) {
         
@@ -177,19 +175,9 @@
     
     self.delegate = delegate;
     
-    //初始化一个ScrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:DWScreen_Frame];
+    UIScrollView *scrollView = [self dw_loadScrollerViewSizeY:0 Height:0];
     
-    self.scrollView = scrollView;
-    
-    //隐藏水平方向的滚动条
-    scrollView.showsHorizontalScrollIndicator = NO;
-    
-    //开启分页
-    scrollView.pagingEnabled = YES;
-    
-    //监听滑动-->成为代理
-    scrollView.delegate = self;
+    scrollView.frame = DWScreen_Frame;
     
     for (int i = 0; i < [imageLinkArray count]; i ++) {
         
@@ -277,25 +265,13 @@
 }
 
 #pragma mark ---设置轮播图／本地图片
-- (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageNameArray:(NSArray *)imageNameArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer {
+- (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageNameArray:(NSArray *)imageNameArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
     
     self.shufflingFigureImageNameArray = imageNameArray;
     
     self.animateTimer = animateTimer;
     
-    //初始化一个ScrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, sizeY, DWScreen_Width, height)];
-    
-    self.scrollView = scrollView;
-    
-    //隐藏水平方向的滚动条
-    scrollView.showsHorizontalScrollIndicator = NO;
-    
-    //开启分页
-    scrollView.pagingEnabled = YES;
-    
-    //监听滑动-->成为代理
-    scrollView.delegate = self;
+    UIScrollView *scrollView = [self dw_loadScrollerViewSizeY:sizeY Height:height];
     
     for (int i = 0; i < [imageNameArray count]; i ++) {
         
@@ -308,6 +284,17 @@
         imageView.size = scrollView.size;
         
         imageView.x = i * scrollView.width;
+        
+        if (pageImageView) {
+            
+            imageView.userInteractionEnabled = true;
+            
+             [self.tapGesture dw_SwipeGestureType:DWTapGesture Target:self Action:@selector(dw_tapGesture) AddView:imageView BackSwipeGestureTypeString:^(NSString * _Nonnull backSwipeGestureTypeString) {}];
+            
+            pageImageView(imageView,i, (int)[imageNameArray count] - 1);
+            
+        }
+
         
         [scrollView addSubview:imageView];
         
@@ -362,27 +349,16 @@
     
 }
 
+
 #pragma mark ---设置轮播图／网络图片
-- (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer {
+- (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
     
     self.imageLinkArray = imageLinkArray;
     
     self.animateTimer = animateTimer;
     
-    //初始化一个ScrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, sizeY, DWScreen_Width, height)];
+   UIScrollView *scrollView = [self dw_loadScrollerViewSizeY:sizeY Height:height];
     
-    self.scrollView = scrollView;
-    
-    //隐藏水平方向的滚动条
-    scrollView.showsHorizontalScrollIndicator = NO;
-    
-    //开启分页
-    scrollView.pagingEnabled = YES;
-    
-    //监听滑动-->成为代理
-    scrollView.delegate = self;
-
     for (int i = 0; i < [imageLinkArray count]; i ++) {
         
         //循环添加imageView
@@ -411,6 +387,19 @@
         imageView.size = scrollView.size;
         
         imageView.x = i * scrollView.width;
+        
+        if (pageImageView) {
+            
+            imageView.tag = i + 1;
+            
+            imageView.userInteractionEnabled = true;
+            
+            [self.tapGesture dw_SwipeGestureType:DWTapGesture Target:self Action:@selector(dw_tapGesture) AddView:imageView BackSwipeGestureTypeString:^(NSString * _Nonnull backSwipeGestureTypeString) {}];
+            
+            pageImageView(imageView,i, (int)[imageLinkArray count] - 1);
+            
+        }
+
         
         [scrollView addSubview:imageView];
         
@@ -465,6 +454,57 @@
 
 }
 
+#pragma mark ---获取点击轮播图索引delegate
+- (void) dw_tapGesture{
+    
+    if ([self.delegate respondsToSelector:@selector(dw_ShufflingFigureSelectImageCount:)]) {
+        
+        [self.delegate dw_ShufflingFigureSelectImageCount:self.imagetag];
+        
+    }
+    
+}
+
+#pragma mark ---scrollerViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    //计算滑动到第几页
+    double page = scrollView.contentOffset.x / scrollView.width;
+    
+    self.pageControl.currentPage = (int)(page + 0.5);
+    
+    self.imagetag = (int)(page + 0.5);
+    
+    if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1) {
+        
+        [DWUser_Defaults setBool:YES forKey:@"lastPage"];
+        
+    }
+    
+    if (self.NewFeaturesImageNameArray) {
+        
+        //代理方法
+        if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
+            
+            [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageNameArray.count - 1];
+            
+        }
+
+    }else if (self.NewFeaturesImageLinkArray) {
+        
+        //代理方法
+        if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
+            
+            [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageLinkArray.count - 1];
+            
+        }
+
+        
+    }
+    
+    
+}
+
 #pragma mark ---开始进行轮播
 - (void)startShuffling {
     
@@ -501,45 +541,6 @@
     
 }
 
-
-#pragma mark ---scrollerViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    //计算滑动到第几页
-    double page = scrollView.contentOffset.x / scrollView.width;
-    
-    self.pageControl.currentPage = (int)(page + 0.5);
-    
-    if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1) {
-        
-        [DWUser_Defaults setBool:YES forKey:@"lastPage"];
-        
-    }
-    
-    if (self.NewFeaturesImageNameArray) {
-        
-        //代理方法
-        if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
-            
-            [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageNameArray.count - 1];
-            
-        }
-
-    }else if (self.NewFeaturesImageLinkArray) {
-        
-        //代理方法
-        if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
-            
-            [self.delegate dw_nowPageCount:page imageAllCount:self.NewFeaturesImageLinkArray.count - 1];
-            
-        }
-
-        
-    }
-    
-    
-}
-
 #pragma mark ---关闭定时器
 - (void)dw_stopShuffling {
     
@@ -566,6 +567,40 @@
 - (void)dw_removePageControl {
     
     [self.pageControl removeFromSuperview];
+    
+}
+
+#pragma mark ---加载ScrollerView
+- (UIScrollView *)dw_loadScrollerViewSizeY:(CGFloat)sizeY Height:(CGFloat)height {
+    
+    //初始化一个ScrollView
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, sizeY, DWScreen_Width, height)];
+    
+    self.scrollView = scrollView;
+    
+    //隐藏水平方向的滚动条
+    scrollView.showsHorizontalScrollIndicator = NO;
+    
+    //开启分页
+    scrollView.pagingEnabled = YES;
+    
+    //监听滑动-->成为代理
+    scrollView.delegate = self;
+    
+    return scrollView;
+    
+}
+
+#pragma mark ---懒加载手势
+- (DWSwipeGestures *)tapGesture {
+    
+    if (!_tapGesture) {
+        
+        _tapGesture = [[DWSwipeGestures alloc] init];
+        
+    }
+    
+    return _tapGesture;
     
 }
 

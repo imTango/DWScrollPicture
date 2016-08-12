@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol DWScrollerPageCountDelegate <NSObject>
+@protocol DWScrollerPictureDelegate <NSObject>
 
 @optional
 /**
@@ -19,6 +19,13 @@
  *  @param imageCount 新特性图片总数
  */
 - (void)dw_nowPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount;
+
+/**
+ *  获取被点击的轮播图索引
+ *
+ *  @param index 被点击的轮播图索引
+ */
+- (void)dw_ShufflingFigureSelectImageCount:(NSInteger)index;
 
 @end
 
@@ -36,7 +43,7 @@
 
 
 /** 代理 */
-@property (assign, nonatomic) id <DWScrollerPageCountDelegate>delegate;
+@property (assign, nonatomic) id <DWScrollerPictureDelegate>delegate;
 
 
 /**
@@ -79,7 +86,7 @@
  *  @param timeInterval 轮播图轮播时间
  *  @param animateTimer 轮播图完成一次轮播的时间
  */
-- (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageNameArray:(NSArray *)imageNameArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer;
+- (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageNameArray:(NSArray *)imageNameArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView;
 
 /**
  *  设置网络图片轮播图
@@ -92,7 +99,7 @@
  *  @param timeInterval   轮播图轮播时间
  *  @param animateTimer   轮播图完成一次轮播的时间
  */
-- (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer;
+- (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView;
 
 /**
  *  删除PageController
