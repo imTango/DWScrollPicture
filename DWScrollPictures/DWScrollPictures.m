@@ -504,6 +504,12 @@
     //计算滑动到第几页
     double page = scrollView.contentOffset.x / scrollView.width;
     
+    if (self.NewFeaturesImageNameArray) {
+        
+        self.pageControl.currentPage = (int)(page + 0.5);
+        
+    }else {
+    
     self.pageControl.currentPage = (int)(page + 0.5) - 1;
         
     if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
@@ -567,6 +573,7 @@
             
         }
         
+    }
     }
     
     if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1) {
