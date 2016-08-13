@@ -31,26 +31,34 @@
 @property (strong, nonatomic) NSArray           *NewFeaturesImageLinkArray;
 
 /** 轮播图本地图片数组 */
-@property (strong, nonatomic) NSArray           *shufflingFigureImageNameArray;
+@property (strong, nonatomic) NSMutableArray    *shufflingFigureImageNameArray;
 
 /** 轮播图网络图片数组 */
-@property (strong, nonatomic) NSArray           *imageLinkArray;
+@property (strong, nonatomic) NSMutableArray    *shufflingFigureImageLinkArray;
 
 /** 轮播图完成一次轮播的时间 */
 @property (assign, nonatomic) NSTimeInterval    animateTimer;
 
-/** 轮播方式 */
+/** 是否开启轮播 */
 @property (assign, nonatomic) BOOL              isbool;
+
+/** 是否是手动拖动图片 */
+@property (assign, nonatomic) BOOL              slide;
 
 /** 轮播图计时器 */
 @property (weak, nonatomic) NSTimer             *shufflingTimer;
 
+/** 轮播图计时器时间 */
+@property (assign, nonatomic) NSTimeInterval    timeInterval;
+
 /** 点击图片手势 */
 @property (strong, nonatomic) DWSwipeGestures   *tapGesture;
 
-/** 被点击图片的tag值 */
-@property (assign, nonatomic) NSInteger         imagetag;
+/** 本地被点击图片的tag值 */
+@property (assign, nonatomic) NSInteger         shufflingFigureImageTag;
 
+/** 网络被点击图片的tag值 */
+@property (assign, nonatomic) NSInteger         shufflingFigureImageLinkTag;
 
 @property (weak, nonatomic) UIScrollView        *scrollView;
 
@@ -267,18 +275,24 @@
 #pragma mark ---设置轮播图／本地图片
 - (void)dw_SetShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageNameArray:(NSArray *)imageNameArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
     
-    self.shufflingFigureImageNameArray = imageNameArray;
+    [self.shufflingFigureImageNameArray addObject:imageNameArray.lastObject];
+    
+    [self.shufflingFigureImageNameArray addObjectsFromArray:imageNameArray];
+    
+    [self.shufflingFigureImageNameArray addObject:imageNameArray.firstObject];
     
     self.animateTimer = animateTimer;
     
+    self.timeInterval = timeInterval;
+    
     UIScrollView *scrollView = [self dw_loadScrollerViewSizeY:sizeY Height:height];
     
-    for (int i = 0; i < [imageNameArray count]; i ++) {
+    for (int i = 0; i < [self.shufflingFigureImageNameArray count]; i ++) {
         
         //循环添加imageView
         UIImageView *imageView = [[UIImageView alloc] init];
         
-        imageView.image = [UIImage imageNamed:imageNameArray[i]];
+        imageView.image = [UIImage imageNamed:self.shufflingFigureImageNameArray[i]];
         
         //设置大小与位置
         imageView.size = scrollView.size;
@@ -301,7 +315,9 @@
     }
     
     //设置scrollView的内容大小
-    [scrollView setContentSize:CGSizeMake([imageNameArray count] * scrollView.width, 0)];
+    [scrollView setContentSize:CGSizeMake([self.shufflingFigureImageNameArray count] * DWScreen_Width, 0)];
+    
+    scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
     
     [view addSubview:scrollView];
     
@@ -310,7 +326,7 @@
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     
     //设置显示几页
-    pageControl.numberOfPages = [imageNameArray count];
+    pageControl.numberOfPages = [self.shufflingFigureImageNameArray count] - 2;
     
     //选中的颜色
     if (self.pageSelctColor) {
@@ -342,29 +358,35 @@
     pageControl.centerX = view.centerX;
     pageControl.y = view.height - pageY;
     
-    
-    self.shufflingTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(startShuffling) userInfo:nil repeats:YES];
+    [self dw_loadSlide];
     
     [self dw_stopShuffling];
     
 }
 
-
 #pragma mark ---设置轮播图／网络图片
 - (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView {
     
-    self.imageLinkArray = imageLinkArray;
+    [self.shufflingFigureImageLinkArray addObject:imageLinkArray.lastObject];
+    
+    [self.shufflingFigureImageLinkArray addObjectsFromArray:imageLinkArray];
+    
+    [self.shufflingFigureImageLinkArray addObject:imageLinkArray.firstObject];
     
     self.animateTimer = animateTimer;
     
+    self.timeInterval = timeInterval;
+    
    UIScrollView *scrollView = [self dw_loadScrollerViewSizeY:sizeY Height:height];
     
-    for (int i = 0; i < [imageLinkArray count]; i ++) {
+    for (int i = 0; i < [self.shufflingFigureImageLinkArray count]; i ++) {
         
         //循环添加imageView
         UIImageView *imageView = [[UIImageView alloc] init];
         
-        NSURL *url = [NSURL URLWithString:imageLinkArray[i]];
+        imageView.backgroundColor = [UIColor blackColor];
+        
+        NSURL *url = [NSURL URLWithString:self.shufflingFigureImageLinkArray[i]];
         
         dispatch_queue_t queue =dispatch_queue_create("loadImage",NULL);
         
@@ -400,13 +422,14 @@
             
         }
 
+        scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
         
         [scrollView addSubview:imageView];
         
     }
     
     //设置scrollView的内容大小
-    [scrollView setContentSize:CGSizeMake([imageLinkArray count] * scrollView.width, 0)];
+    [scrollView setContentSize:CGSizeMake([self.shufflingFigureImageLinkArray count] * scrollView.width, 0)];
     
     [view addSubview:scrollView];
     
@@ -415,7 +438,7 @@
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     
     //设置显示几页
-    pageControl.numberOfPages = [imageLinkArray count];
+    pageControl.numberOfPages = [self.shufflingFigureImageLinkArray count] - 2;
     
     //选中的颜色
     if (self.pageSelctColor) {
@@ -447,8 +470,7 @@
     pageControl.centerX = view.centerX;
     pageControl.y = view.height - pageY;
     
-    
-    self.shufflingTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(startShuffling) userInfo:nil repeats:YES];
+    [self dw_loadSlide];
     
     [self dw_stopShuffling];
 
@@ -457,12 +479,23 @@
 #pragma mark ---获取点击轮播图索引delegate
 - (void) dw_tapGesture{
     
-    if ([self.delegate respondsToSelector:@selector(dw_ShufflingFigureSelectImageCount:)]) {
+    if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
         
-        [self.delegate dw_ShufflingFigureSelectImageCount:self.imagetag];
+        if ([self.delegate respondsToSelector:@selector(dw_ShufflingFigureSelectImageCount:)]) {
+            
+            [self.delegate dw_ShufflingFigureSelectImageCount:self.shufflingFigureImageLinkTag];
+            
+        }
+        
+    }else if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+        
+        if ([self.delegate respondsToSelector:@selector(dw_ShufflingFigureSelectImageCount:)]) {
+            
+            [self.delegate dw_ShufflingFigureSelectImageCount:self.shufflingFigureImageTag];
+            
+        }
         
     }
-    
 }
 
 #pragma mark ---scrollerViewDelegate
@@ -471,9 +504,70 @@
     //计算滑动到第几页
     double page = scrollView.contentOffset.x / scrollView.width;
     
-    self.pageControl.currentPage = (int)(page + 0.5);
-    
-    self.imagetag = (int)(page + 0.5);
+    self.pageControl.currentPage = (int)(page + 0.5) - 1;
+        
+    if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
+        
+        self.pageControl.currentPage = 0;
+        
+    }else if (self.scrollView.contentOffset.x == 0) {
+        
+        if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+            
+            self.pageControl.currentPage = [self.shufflingFigureImageNameArray count] - 2;
+            
+        }else if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+            
+            self.pageControl.currentPage = [self.shufflingFigureImageLinkArray count] - 2;
+            
+        }
+        
+    }
+
+    if ((int)(page + 0.5) == 0) {
+        
+        if (self.shufflingFigureImageNameArray) {
+            
+               self.shufflingFigureImageTag = self.shufflingFigureImageNameArray.count - 3;
+        
+        }
+        
+        if (self.shufflingFigureImageLinkArray) {
+            
+            self.shufflingFigureImageLinkTag = self.shufflingFigureImageLinkArray.count - 3;
+            
+        }
+        
+             
+    }else if ((int)(page + 0.5) == self.shufflingFigureImageNameArray.count || (int)(page + 0.5) == self.shufflingFigureImageLinkArray.count) {
+        
+        if (self.shufflingFigureImageNameArray) {
+            
+            self.shufflingFigureImageTag = 0;
+            
+        }
+        
+        if (self.shufflingFigureImageLinkArray) {
+            
+            self.shufflingFigureImageLinkTag = 0;
+            
+        }
+        
+    }else {
+        
+        if (self.shufflingFigureImageNameArray) {
+            
+            self.shufflingFigureImageTag = (int)(page + 0.5) - 1;
+            
+        }
+        
+        if (self.shufflingFigureImageLinkArray) {
+            
+            self.shufflingFigureImageLinkTag = (int)(page + 0.5) - 1;
+            
+        }
+        
+    }
     
     if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1) {
         
@@ -499,64 +593,131 @@
             
         }
 
-        
     }
-    
     
 }
 
 #pragma mark ---开始移动
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
-    [self dw_stopShuffling];
+    [self.shufflingTimer setFireDate:[NSDate distantFuture]];
+    
+    self.slide = YES;
+    
+    if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
+        
+        self.scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
+        
+    }else if (self.scrollView.contentOffset.x == 0) {
+        
+        if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+            
+        self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
+            
+        }
+        
+        if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+        
+        self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
+        
+        }
+    }
     
 }
 
 #pragma mark ---移动完成
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     
-    [self dw_startShuffling];
+    if (self.isbool && self.slide) {
+
+        [self.shufflingTimer setFireDate:[NSDate distantPast]];
+    
+        self.slide = NO;
+    }
     
 }
 
-#pragma mark ---开始进行轮播
-- (void)startShuffling {
+#pragma mark ---开启正向轮播
+- (void)startFollowShuffling {
     
-    CGPoint point;
+    self.isbool = YES;
     
-    if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.imageLinkArray count] - 1)) {
+        [UIView animateWithDuration:self.animateTimer animations:^{
+    
+            self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + DWScreen_Width, 0);
+            
+        }];
+    
+    if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
         
-        self.isbool = YES;
+        self.pageControl.currentPage = 0;
         
+        self.scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
         
     }else if (self.scrollView.contentOffset.x == 0) {
         
-        self.isbool = NO;
+        if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+            
+            self.pageControl.currentPage = [self.shufflingFigureImageNameArray count] - 2;
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
+            
+        }
+        
+        if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+            
+            self.pageControl.currentPage = [self.shufflingFigureImageLinkArray count] - 2;
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
+            
+        }
         
     }
+
+}
+
+#pragma mark ---开启反向轮播
+- (void)startGoAgainstShuffling {
     
-    if (self.isbool) {
-        
-        point = CGPointMake(self.scrollView.contentOffset.x - DWScreen_Width, 0);
-        
-    }else if (!self.isbool){
-        
-        point = CGPointMake(self.scrollView.contentOffset.x + DWScreen_Width, 0);
-        
-    }
+    self.isbool = YES;
     
     [UIView animateWithDuration:self.animateTimer animations:^{
         
-        
-        self.scrollView.contentOffset = point;
-        
+        self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - DWScreen_Width, 0);
         
     }];
     
+    if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
+        
+        self.pageControl.currentPage = 0;
+        
+        self.scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
+        
+    }else if (self.scrollView.contentOffset.x == 0) {
+        
+        if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+            
+            self.pageControl.currentPage = [self.shufflingFigureImageNameArray count] - 2;
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
+            
+        }
+        
+        if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+            
+            self.pageControl.currentPage = [self.shufflingFigureImageLinkArray count] - 2;
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
+            
+        }
+        
+    }
 }
 
 #pragma mark ---关闭定时器
 - (void)dw_stopShuffling {
+    
+    self.isbool = NO;
     
     [self.shufflingTimer setFireDate:[NSDate distantFuture]];
 }
@@ -605,6 +766,39 @@
     
 }
 
+#pragma mark ---设置scrollerView滑动方向
+- (void)dw_loadSlide {
+    
+    if (self.direction == DWFollowShuffling) {
+        
+        self.shufflingTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(startFollowShuffling) userInfo:nil repeats:YES];
+        
+    }else if (self.direction == DWGoAgainstShuffling) {
+        
+        self.shufflingTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(startGoAgainstShuffling) userInfo:nil repeats:YES];
+        
+        if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+            
+            
+            self.pageControl.currentPage = self.shufflingFigureImageNameArray.count - 2;
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
+            
+        }
+        
+        if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+            
+            self.pageControl.currentPage = self.shufflingFigureImageNameArray.count - 2;
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
+            
+        }
+        
+    }
+
+    
+}
+
 #pragma mark ---懒加载手势
 - (DWSwipeGestures *)tapGesture {
     
@@ -618,5 +812,29 @@
     
 }
 
+#pragma mark ---懒加载本地图片数组
+- (NSMutableArray *)shufflingFigureImageNameArray {
+    
+    if (!_shufflingFigureImageNameArray) {
+        
+        _shufflingFigureImageNameArray = [NSMutableArray array];
+        
+    }
+    
+    return _shufflingFigureImageNameArray;
+    
+}
+
+#pragma mark ---懒加载网络图片数组
+- (NSMutableArray *)shufflingFigureImageLinkArray {
+    
+    if (!_shufflingFigureImageLinkArray) {
+        
+        _shufflingFigureImageLinkArray = [NSMutableArray array];
+        
+    }
+    
+    return _shufflingFigureImageLinkArray;
+}
 
 @end

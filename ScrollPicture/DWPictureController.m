@@ -47,6 +47,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    //添加手势
     [self.backSwipe dw_SwipeGestureType:DWRightSwipeGestures Target:self Action:@selector(backVC) AddView:self.view BackSwipeGestureTypeString:^(NSString * _Nonnull backSwipeGestureTypeString) {}];
     
 }

@@ -56,10 +56,15 @@
     
     [self.networkongRebirth setPageNormalColor:[UIColor whiteColor]];
     
+#warning ---遵循代理
     self.rebirth.delegate = self;
     
     self.networkongRebirth.delegate = self;
     
+#warning ---设置轮播图走向
+    [self.rebirth setDirection:DWGoAgainstShuffling];
+    
+#warning ---本地图片
     [self.rebirth dw_SetShufflingFigureView:self.view
                   sizeY:0
                   height:self.view.frame.size.height/2
@@ -73,7 +78,7 @@
                   animateTimer:1.0
                   pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {}];
     
-    
+#warning ---网络图片
     [self.networkongRebirth dw_SetNetworkingShufflingFigureView:self.view
                             sizeY:self.view.frame.size.height/2
                             height:self.view.frame.size.height/2
@@ -158,6 +163,7 @@
     
 }
 
+#pragma mark ---点击了图片
 - (void) dw_ShufflingFigureSelectImageCount:(NSInteger)index {
     
     DWPictureController *picVC = [[DWPictureController alloc] init];

@@ -1,23 +1,24 @@
 # DWScrollPictures
 ---
-#轻松实现新特性控制器与轮播图
-#如果感觉不错，请Star我
+#轻松实现新特性(引导页)控制器与轮播图
+#如果感觉不错，请点击Star
 ---
 #CocoaPods
 	platform :ios, '8.0'
 	pod 'DWScrollPictures'
-
+---
 #Clone
 ###首先将DWScrollPictures文件夹导入到项目中
 ---
-#第一步-新特性
+#新特性/引导页
+##第一步
 ####引入头文件
     在AppDelegate.m中引入头文件
     #import "DWScrollPictures.h"
 	#import "新特性控制器.h"
 	#import "首页控制器.h"
 ---
-#第二步-新特性
+##第二步
 ####在- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}方法中写入以下代码
 	 self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -25,8 +26,8 @@
 	
 	return YES;
 ---
-#第三步-新特性
-####新特性控制器中的实现
+##第三步
+####新特性(引导页)控制器中的实现
 #####引入头文件，声明代理方法
 	#import "DWScrollPictures.h"
 	<DWScrollerPageCountDelegate>
@@ -48,12 +49,20 @@
 	}
 ---
 ####在viewDidLoad中实现以下方法
-	//设置新特性图片
-    [self.features dw_SetNewFeaturesView:self.view 	delegate:self	imageName:@[@"图片名称.JPG"] currentPageIndicatorTintColor:[pageController选中时的颜色] pageIndicatorTintColor:[pageController默认颜色] lastPageWithView:^(UIView *lastPageView) {
+		/**
+		 *  设置引导图/本地
+		 *
+		 *  @param view   		  	当前控制器View
+ 		 *  @param delegate      	代理遵守者
+ 		 *  @param imageNameArray   引导图数组
+		 *  @param pageImageView                 				imageView/某个imageView/imageView总量
+		 */
+
+	[self.features dw_SetNewFeaturesView:self.view delegate:self imageName:@[@"IMG_1.JPG",@"IMG_2.JPG",@"IMG_3.JPG",@"IMG_4.JPG"] pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {        
         
-            //最后一个视图
-            
     }];
+#同样支持网络图片
+	dw_SetNetworkingNewFeaturesView:self.view delegate:self imageLinkArray:@[@"网络链接"] pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {}
 ---
 ####实现代理方法
 	- (void)dw_NewFeaturesPageCount:(double)pageCount imageCount:(NSInteger)imageCount{
@@ -84,6 +93,9 @@
 	
 	[self.rebirth dw_SetShufflingFigureView:所在视图 sizeY:轮播图Y值 height:轮播图高度 pageY:pageY值 imageArray:@[@"本地图片名称数组"] timeInterval:轮播时间 animateTimer:完成每次的轮播的时间];
 #####开始设置网络轮播图片
+	//设置轮播图方向---默认为顺时针
+	[self.rebirth setDirection:DWGoAgainstShuffling];
+	
 	[self.networkongrebirth dw_SetNetworkingShufflingFigureView:所在视图  sizeY:轮播图Y值 height:轮播图高度 pageY:pageY值imageLinkArray:@[@"网络图片链接数组"] timeInterval:轮播时间 animateTimer:完成每次的轮播的时间];
 ---	
 	//开始进行轮播

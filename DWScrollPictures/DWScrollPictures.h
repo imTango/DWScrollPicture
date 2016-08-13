@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    /** 顺时针 */
+    DWFollowShuffling,
+    
+    /** 逆时针 */
+    DWGoAgainstShuffling,
+    
+} DWDirection;
+
 @protocol DWScrollerPictureDelegate <NSObject>
 
 @optional
@@ -31,16 +40,14 @@
 
 @interface DWScrollPictures : NSObject
 
-/**
- *  pageController选中时的颜色
- */
+/** pageController选中时的颜色 */
 @property (weak, nonatomic) UIColor *pageSelctColor;
 
-/**
- *  pageController未选中的颜色
- */
+/** pageController未选中的颜色 */
 @property (weak, nonatomic) UIColor *pageNormalColor;
 
+/** direction轮播图方向/默认顺时针 */
+@property (assign, nonatomic) DWDirection direction;
 
 /** 代理 */
 @property (assign, nonatomic) id <DWScrollerPictureDelegate>delegate;
@@ -101,24 +108,16 @@
  */
 - (void)dw_SetNetworkingShufflingFigureView:(UIView *)view sizeY:(CGFloat)sizeY  height:(CGFloat)height pageY:(CGFloat)pageY imageLinkArray:(NSArray *)imageLinkArray timeInterval:(NSTimeInterval)timeInterval animateTimer:(NSTimeInterval)animateTimer pageImageView:(void (^)(UIView *PageImageView, int imageCount, int imageAllCount))pageImageView;
 
-/**
- *  删除PageController
- */
+/** 删除PageController */
 - (void)dw_removePageControl;
 
-/**
- *  暂时停止自动轮播
- */
+/** 暂时停止自动轮播 */
 - (void)dw_stopShuffling;
 
-/**
- *  开启自动轮播
- */
+/** 开启自动轮播 */
 - (void)dw_startShuffling;
 
-/**
- *  关闭自动轮播
- */
+/** 关闭自动轮播 */
 - (void)dw_dismissShuffling;
 
 @end
