@@ -512,25 +512,28 @@
     
     self.pageControl.currentPage = (int)(page + 0.5) - 1;
         
-    if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
-        
-        self.pageControl.currentPage = 0;
-        
-    }else if (self.scrollView.contentOffset.x == 0) {
-        
-        if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+        if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
             
-            self.pageControl.currentPage = [self.shufflingFigureImageNameArray count] - 2;
+            self.pageControl.currentPage = 0;
             
-        }else if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+        }else if (self.scrollView.contentOffset.x == 0) {
             
-            self.pageControl.currentPage = [self.shufflingFigureImageLinkArray count] - 2;
+            if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
+                
+                self.pageControl.currentPage = [self.shufflingFigureImageNameArray count] - 2;
+                
+            }
             
+            if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
+                
+                self.pageControl.currentPage = [self.shufflingFigureImageLinkArray count] - 2;
+                
+                }
         }
         
-    }
 
-    if ((int)(page + 0.5) == 0) {
+        
+       if ((int)(page + 0.5) == 0) {
         
         if (self.shufflingFigureImageNameArray) {
             
@@ -611,7 +614,15 @@
     
     self.slide = YES;
     
+    
+}
+
+#pragma mark ---移动完成
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
     if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
+        
+        self.pageControl.currentPage = 0;
         
         self.scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
         
@@ -619,22 +630,17 @@
         
         if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
             
-        self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
-            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
+         
         }
         
         if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
-        
-        self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
-        
+            
+            self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
+            
         }
     }
-    
-}
 
-#pragma mark ---移动完成
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    
     if (self.isbool && self.slide) {
 
         [self.shufflingTimer setFireDate:[NSDate distantPast]];
@@ -657,23 +663,17 @@
     
     if (self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 1) || self.scrollView.contentOffset.x == DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 1)) {
         
-        self.pageControl.currentPage = 0;
-        
         self.scrollView.contentOffset = CGPointMake(DWScreen_Width, 0);
         
     }else if (self.scrollView.contentOffset.x == 0) {
         
         if (self.shufflingFigureImageNameArray && self.shufflingFigureImageNameArray.count > 0) {
             
-            self.pageControl.currentPage = [self.shufflingFigureImageNameArray count] - 2;
-            
             self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageNameArray count] - 2), 0);
             
         }
         
         if (self.shufflingFigureImageLinkArray && self.shufflingFigureImageLinkArray.count > 0) {
-            
-            self.pageControl.currentPage = [self.shufflingFigureImageLinkArray count] - 2;
             
             self.scrollView.contentOffset = CGPointMake(DWScreen_Width * ([self.shufflingFigureImageLinkArray count] - 2), 0);
             
