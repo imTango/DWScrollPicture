@@ -5,7 +5,7 @@
 ---
 #CocoaPods
 	platform :ios, '8.0'
-	pod 'DWScrollPictures'
+	pod 'DWScrollPictures'#新特性(引导页)控制器与轮播图
 ---
 #Clone
 ###首先将DWScrollPictures文件夹导入到项目中
