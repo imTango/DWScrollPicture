@@ -305,7 +305,7 @@
             
              [self.tapGesture dw_SwipeGestureType:DWTapGesture Target:self Action:@selector(dw_tapGesture) AddView:imageView BackSwipeGestureTypeString:^(NSString * _Nonnull backSwipeGestureTypeString) {}];
             
-            pageImageView(imageView,i, (int)[imageNameArray count] - 1);
+            pageImageView(imageView, i, (int)[self.shufflingFigureImageNameArray count]);
             
         }
 
@@ -418,7 +418,7 @@
             
             [self.tapGesture dw_SwipeGestureType:DWTapGesture Target:self Action:@selector(dw_tapGesture) AddView:imageView BackSwipeGestureTypeString:^(NSString * _Nonnull backSwipeGestureTypeString) {}];
             
-            pageImageView(imageView,i, (int)[imageLinkArray count] - 1);
+            pageImageView(imageView,i , (int)[self.shufflingFigureImageLinkArray count]);
             
         }
 

@@ -76,7 +76,11 @@
                   @"IMG_4.JPG"]
                   timeInterval:2.0
                   animateTimer:1.0
-                  pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {}];
+                  pageImageView:^(UIView *pageImageView, int imageCount, int imageAllCount) {
+                  
+                      NSLog(@"%d,imageAllCount===%d",imageCount,imageAllCount);
+                      
+                  }];
     
 #warning ---网络图片
     [self.networkongRebirth dw_SetNetworkingShufflingFigureView:self.view
