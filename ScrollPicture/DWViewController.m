@@ -216,12 +216,7 @@
     
     if (pageCount != 2) {
         
-        for (UIView *v in self.label.subviews) {
-            
-            [v removeFromSuperview];
-            
-        }
-        
+        [self.label removeFromSuperview];
 }
     
 }
