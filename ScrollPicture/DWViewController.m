@@ -170,7 +170,7 @@
     
 }
 
-#pragma mark ---点击了图片
+#pragma mark ---点击图片Delegate
 - (void) dw_ShufflingFigureSelectImageCount:(NSInteger)index {
     
     DWPictureController *picVC = [[DWPictureController alloc] init];
@@ -186,12 +186,7 @@
     
 }
 
-- (void)dw_nowPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount {
-    
-    NSLog(@"%f----%ld",pageCount,imageAllCount);
-    
-}
-
+#pragma mark ---获取当前轮播图所在视图
 - (void)dw_ShufflingFigureNowPageCount:(double)pageCount pageViewArray:(NSArray *)pageViewArray pageView:(UIView *)pageView {
     
     NSLog(@"%f",pageCount);
