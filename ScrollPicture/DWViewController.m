@@ -183,5 +183,10 @@
     
 }
 
+- (void)dw_nowPageCount:(double)pageCount imageAllCount:(NSInteger)imageAllCount {
+    
+    NSLog(@"%f----%ld",pageCount,imageAllCount);
+    
+}
 
 @end

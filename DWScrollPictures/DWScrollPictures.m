@@ -594,7 +594,9 @@
             
         }
 
-    }else if (self.NewFeaturesImageLinkArray) {
+    }
+    
+        if (self.NewFeaturesImageLinkArray) {
         
         //代理方法
         if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
