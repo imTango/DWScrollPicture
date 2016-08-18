@@ -36,6 +36,15 @@ typedef enum : NSUInteger {
  */
 - (void)dw_ShufflingFigureSelectImageCount:(NSInteger)index;
 
+/**
+ *  获取当前轮播图所在视图
+ *
+ *  @param pageCount     当前所在界面
+ *  @param pageViewArray 界面数组
+ *  @param pageView      scrollerView
+ */
+- (void)dw_ShufflingFigureNowPageCount:(double)pageCount pageViewArray:(NSArray *)pageViewArray pageView:(UIView *)pageView;
+
 @end
 
 @interface DWScrollPictures : NSObject

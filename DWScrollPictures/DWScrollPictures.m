@@ -60,6 +60,12 @@
 /** 网络被点击图片的tag值 */
 @property (assign, nonatomic) NSInteger         shufflingFigureImageLinkTag;
 
+/** 本地轮播图数组 */
+@property (strong, nonatomic) NSMutableArray    *shufflingFigurepPageViewArray;
+
+/** 网络轮播图数组 */
+@property (strong, nonatomic) NSMutableArray    *shufflingFigurepLinkPageViewArray;
+
 @property (weak, nonatomic) UIScrollView        *scrollView;
 
 @end
@@ -292,6 +298,8 @@
         //循环添加imageView
         UIImageView *imageView = [[UIImageView alloc] init];
         
+        [self.shufflingFigurepPageViewArray addObject:imageView];
+        
         imageView.image = [UIImage imageNamed:self.shufflingFigureImageNameArray[i]];
         
         //设置大小与位置
@@ -384,6 +392,8 @@
         //循环添加imageView
         UIImageView *imageView = [[UIImageView alloc] init];
         
+        [self.shufflingFigurepLinkPageViewArray addObject:imageView];
+        
         imageView.backgroundColor = [UIColor blackColor];
         
         NSURL *url = [NSURL URLWithString:self.shufflingFigureImageLinkArray[i]];
@@ -411,6 +421,8 @@
         imageView.x = i * scrollView.width;
         
         if (pageImageView) {
+            
+            
             
             imageView.tag = i + 1;
             
@@ -504,6 +516,8 @@
     //计算滑动到第几页
     double page = scrollView.contentOffset.x / scrollView.width;
     
+    scrollView.tag = page;
+    
     if (self.NewFeaturesImageNameArray) {
         
         self.pageControl.currentPage = (int)(page + 0.5);
@@ -594,9 +608,7 @@
             
         }
 
-    }
-    
-        if (self.NewFeaturesImageLinkArray) {
+    }else if (self.NewFeaturesImageLinkArray) {
         
         //代理方法
         if ([self.delegate respondsToSelector:@selector(dw_nowPageCount:imageAllCount:)]) {
@@ -606,6 +618,28 @@
         }
 
     }
+    
+    if (self.shufflingFigureImageNameArray && self.shufflingFigureImageLinkArray.count == 0) {
+        
+        if ([self.delegate respondsToSelector:@selector(dw_ShufflingFigureNowPageCount:pageViewArray:pageView:)]) {
+            
+            [self.delegate dw_ShufflingFigureNowPageCount:page pageViewArray:self.shufflingFigurepPageViewArray pageView:scrollView];
+            
+        }
+        
+    }else if (self.shufflingFigureImageLinkArray) {
+        
+        NSLog(@"%ld",self.shufflingFigureImageLinkArray.count);
+        
+            if ([self.delegate respondsToSelector:@selector(dw_ShufflingFigureNowPageCount:pageViewArray:pageView:)]) {
+                
+                [self.delegate dw_ShufflingFigureNowPageCount:page pageViewArray:self.shufflingFigureImageLinkArray pageView:scrollView];
+                
+            }
+        
+        
+    }
+
     
 }
 
@@ -845,5 +879,32 @@
     
     return _shufflingFigureImageLinkArray;
 }
+
+#pragma mark ---懒加载本地轮播图视图数组
+- (NSMutableArray *)shufflingFigurepPageViewArray {
+    
+    if (!_shufflingFigurepPageViewArray) {
+        
+        _shufflingFigurepPageViewArray = [NSMutableArray array];
+        
+    }
+    
+    return _shufflingFigurepPageViewArray;
+    
+}
+
+#pragma mark ---懒加载本地轮播图视图数组
+- (NSMutableArray *)shufflingFigurepLinkPageViewArray {
+    
+    if (!_shufflingFigurepLinkPageViewArray) {
+        
+        _shufflingFigurepLinkPageViewArray = [NSMutableArray array];
+        
+    }
+    
+    return _shufflingFigurepLinkPageViewArray;
+    
+}
+
 
 @end
