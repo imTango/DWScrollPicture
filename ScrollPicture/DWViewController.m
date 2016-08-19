@@ -189,36 +189,7 @@
 #pragma mark ---获取当前轮播图所在视图
 - (void)dw_ShufflingFigureNowPageCount:(double)pageCount pageViewArray:(NSArray *)pageViewArray pageView:(UIView *)pageView {
     
-    NSLog(@"%f",pageCount);
-    
-    NSLog(@"%ld",pageViewArray.count);
-
-    
-    if (pageCount == 2) {
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:pageView.frame];
-        
-        self.label = label;
-        
-        pageView = pageViewArray[2];
-        
-        label.textAlignment = NSTextAlignmentCenter;
-        
-        label.textColor = [UIColor redColor];
-        
-        label.font = [UIFont systemFontOfSize:25];
-        
-        label.text = @"在这里";
-        
-        [self.view addSubview:label];
-        
-    }
-    
-    if (pageCount != 2) {
-        
-        [self.label removeFromSuperview];
-}
-    
+       
 }
 
 @end
