@@ -116,3 +116,13 @@
 	 *  @param index 被点击的轮播图索引
 	 */
 	- (void)dw_ShufflingFigureSelectImageCount:(NSInteger)index;
+---
+####新增轮播图切换动画方式
+	/** 设置轮播图翻转样式 */
+	@property (assign, nonatomic) DWAnimationType animationType;
+
+	/** 设置动画的过度方向 */
+	@property (assign, nonatomic) DWSubtype subtype;
+
+	/** 设置动画时间 */
+	@property (assign, nonatomic) double duration;
