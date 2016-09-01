@@ -18,6 +18,72 @@ typedef enum : NSUInteger {
     
 } DWDirection;
 
+typedef enum :NSUInteger {
+    /** 淡入淡出 */
+    fade,
+    
+    /** 推挤 */
+    push,
+    
+    /** 揭开 */
+    reveal,
+    
+    /** 覆盖 */
+    moveIn,
+    
+    /** 立方体 */
+    cube,
+    
+    /** 吮吸 */
+    suckEffect,
+    
+    /** 翻转 */
+    oglFlip,
+    
+    /** 波纹 */
+    rippleEffect,
+    
+    /** 翻页 */
+    pageCurl,
+    
+    /** 反翻页 */
+    pageUnCurl,
+    
+    /** 开镜头 */
+    cameraIrisHollowOpen,
+    
+    /** 关镜头 */
+    cameraIrisHollowClose,
+    
+    /** 下翻页 */
+    curlDown,
+    
+    /** 上翻页 */
+    curlUp,
+    
+    /** 左翻转 */
+    flipFromLeft,
+    
+    /** 右翻转 */
+    flipFromRight,
+    
+} DWAnimationType;
+
+typedef enum :NSUInteger {
+    /** 左 */
+    fromLeft,
+    
+    /** 右 */
+    fromRight,
+    
+    /** 上 */
+    fromTop,
+    
+    /** 下 */
+    fromBottom,
+    
+} DWSubtype;
+
 @protocol DWScrollerPictureDelegate <NSObject>
 
 @optional
@@ -61,6 +127,14 @@ typedef enum : NSUInteger {
 /** 代理 */
 @property (assign, nonatomic) id <DWScrollerPictureDelegate>delegate;
 
+/** 设置轮播图翻转样式 */
+@property (assign, nonatomic) DWAnimationType animationType;
+
+/** 设置动画的过度方向 */
+@property (assign, nonatomic) DWSubtype subtype;
+
+/** 设置动画时间 */
+@property (assign, nonatomic) double duration;
 
 /**
  *  设置引导页控制器与主页面控制器

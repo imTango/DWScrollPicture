@@ -513,6 +513,106 @@
 #pragma mark ---scrollerViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    if ((self.animationType && self.subtype) ||
+        (self.animationType == fade && self.subtype == fromLeft) ||
+        (self.animationType == fade && self.subtype != fromLeft) ||
+        (self.animationType != fade && self.subtype == fromLeft)) {
+        
+        static NSString *animationType;
+        
+        static NSString *subtype;
+        
+        switch (self.animationType) {
+            case 0:
+                animationType = @"fade";
+                break;
+            case 1:
+                animationType = @"push";
+                break;
+            case 2:
+                animationType = @"reveal";
+                break;
+            case 3:
+                animationType = @"moveIn";
+                break;
+            case 4:
+                animationType = @"cube";
+                break;
+            case 5:
+                animationType = @"suckEffect";
+                break;
+            case 6:
+                animationType = @"oglFlip";
+                break;
+            case 7:
+                animationType = @"rippleEffect";
+                break;
+            case 8:
+                animationType = @"pageCurl";
+                break;
+            case 9:
+                animationType = @"pageUnCurl";
+                break;
+            case 10:
+                animationType = @"cameraIrisHollowOpen";
+                break;
+            case 11:
+                animationType = @"cameraIrisHollowClose";
+                break;
+            case 12:
+                animationType = @"curlDown";
+                break;
+            case 13:
+                animationType = @"curlUp";
+                break;
+            case 14:
+                animationType = @"flipFromLeft";
+                break;
+            case 15:
+                animationType = @"flipFromRight";
+                break;
+           
+            default:
+                break;
+        }
+     
+        switch (self.subtype) {
+            case 0:
+                subtype = @"fromLeft";
+                break;
+            case 1:
+                subtype = @"fromRight";
+                break;
+            case 2:
+                subtype = @"fromTop";
+                break;
+            case 3:
+                subtype = @"fromBottom";
+                break;
+            default:
+                break;
+        }
+        
+        CATransition *animation = [CATransition animation];
+        
+        animation.type = animationType;
+        
+        animation.subtype = subtype;
+        
+        if (self.duration) {
+            
+             animation.duration = self.duration;
+            
+        }else {
+            
+            animation.duration = self.animateTimer;
+            
+        }
+        
+        [scrollView.layer addAnimation:animation forKey:nil];
+        
+    }
+    
     //计算滑动到第几页
     double page = scrollView.contentOffset.x / scrollView.width;
     
@@ -639,7 +739,6 @@
         
         
     }
-
     
 }
 

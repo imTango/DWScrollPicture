@@ -67,6 +67,10 @@
 #warning ---设置轮播图走向
     [self.rebirth setDirection:DWGoAgainstShuffling];
     
+    [self.rebirth setAnimationType:suckEffect];
+    
+    [self.rebirth setSubtype:fromLeft];
+    
 #warning ---本地图片
     [self.rebirth dw_SetShufflingFigureView:self.view
                   sizeY:0
