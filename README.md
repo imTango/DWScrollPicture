@@ -2,6 +2,8 @@
 ---
 #轻松实现新特性(引导页)控制器与轮播图
 #如果感觉不错，请点击Star
+#使用中如果遇到问题,可以加群:577506623
+#[Bug反馈、讨论等， 请移步CodeData地址](http://www.codedata.cn/cdetail/Objective-C/ScrollView/1471998874096327)
 ---
 #CocoaPods
 	platform :ios, '8.0'
