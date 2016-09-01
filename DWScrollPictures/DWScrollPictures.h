@@ -115,6 +115,9 @@ typedef enum :NSUInteger {
 
 @interface DWScrollPictures : NSObject
 
+/** 网络图片占位图 */
+@property (strong, nonatomic) UIImage *defaultImage;
+
 /** pageController选中时的颜色 */
 @property (weak, nonatomic) UIColor *pageSelctColor;
 

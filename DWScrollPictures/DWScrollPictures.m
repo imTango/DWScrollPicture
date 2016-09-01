@@ -408,21 +408,26 @@
             
             dispatch_sync(dispatch_get_main_queue(), ^{
                 
-                imageView.image = img;
+                if (img) {
+                    
+                    imageView.image = img;
+                    
+                }else {
+                    
+                    imageView.image = self.defaultImage;
+                    
+                }
                 
             });
             
         });
 
-        
         //设置大小与位置
         imageView.size = scrollView.size;
         
         imageView.x = i * scrollView.width;
         
         if (pageImageView) {
-            
-            
             
             imageView.tag = i + 1;
             

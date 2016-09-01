@@ -90,6 +90,9 @@
                   }];
     
 #warning ---网络图片
+    
+    self.networkongRebirth.defaultImage = [UIImage imageNamed:@"IMG_1.JPG"];
+    
     [self.networkongRebirth dw_SetNetworkingShufflingFigureView:self.view
                             sizeY:self.view.frame.size.height/2
                             height:self.view.frame.size.height/2
