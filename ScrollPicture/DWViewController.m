@@ -91,6 +91,10 @@
     
 #warning ---网络图片
     
+    self.networkongRebirth.animationType = cube;
+    
+    self.networkongRebirth.subtype = fromRight;
+    
     self.networkongRebirth.defaultImage = [UIImage imageNamed:@"IMG_1.JPG"];
     
     [self.networkongRebirth dw_SetNetworkingShufflingFigureView:self.view
