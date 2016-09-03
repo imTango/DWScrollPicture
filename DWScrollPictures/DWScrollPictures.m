@@ -601,7 +601,7 @@
     }
     }
     
-    if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1) {
+    if (page >= self.NewFeaturesImageNameArray.count - 1 || page >= self.NewFeaturesImageLinkArray.count - 1|| self.lastNews) {
         
         [DWUser_Defaults setBool:YES forKey:@"lastPage"];
         
