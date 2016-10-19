@@ -25,7 +25,8 @@
 	 self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     [DWScrollPictures dw_AppdelegateNewFeaturesWindow:self.window newFeaturesVC:[[新特性控制器 alloc] init] mainVC:[[首页控制器 alloc] init]];
-	
+    //PS:使用本地图片引导页需要加
+     [self.window makeKeyAndVisible];
 	return YES;
 ---
 ##第三步
