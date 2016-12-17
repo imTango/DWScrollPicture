@@ -1,5 +1,7 @@
 # DWScrollPictures
 ---
+# [轮播图建议](https://github.com/GrowingLife/DWScrollerPictures)
+# [引导页建议](https://github.com/dwanghello/DWGuidePage)
 # 轻松实现新特性(引导页)控制器与轮播图
 # 如果感觉不错，请点击Star
 # 使用中如果遇到问题,可以加群:577506623
