@@ -1,5 +1,6 @@
 # DWScrollPictures
 ---
+# 此代码不建议使用，代码逻辑性太乱，本人已经将其拆分，推荐使用如下:
 # [轮播图建议](https://github.com/GrowingLife/DWScrollerPictures)
 # [引导页建议](https://github.com/dwanghello/DWGuidePage)
 # 轻松实现新特性(引导页)控制器与轮播图
